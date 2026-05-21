@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D'Green Niravakuta | Boutique Stay</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Cinzel & Montserrat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #4b533c; /* Exact logo green */
+            --primary-dark: #373d2c;
+            --secondary-color: #b37d4e; /* Teak Gold */
+            --text-dark: #2c2c2c;
+            --text-light: #ffffff;
+            --bg-light: #f6f3eb; /* Exact logo background cream */
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: #ffffff;
+        }
+
+        h1, h2, h3, .logo-text {
+            font-family: 'Cinzel', serif;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 25px;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-whatsapp {
+            background-color: #25d366;
+            color: var(--text-light);
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #1ebe57;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--text-light);
+            color: var(--text-light);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--text-light);
+            color: var(--primary-color);
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(75, 83, 60, 0.96); /* Exact Logo Green with transparency */
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .header-logo {
+            height: 45px;
+            width: auto;
+            border-radius: 4px;
+        }
+
+        .logo-text {
+            color: var(--text-light);
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .logo-text span {
+            color: var(--bg-light);
+            font-weight: 400;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--bg-light);
+        }
+
+        /* Language Switcher */
+        .lang-switch {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            padding: 2px 6px;
+        }
+
+        .lang-btn.active {
+            color: var(--text-light);
+        }
+
+        .lang-divider {
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 0.8rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.55)), url('pool.jpg') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--text-light);
+            padding-top: 80px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.2rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+            max-width: 850px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.3;
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            margin-bottom: 35px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 300;
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+
+        .hero-cta {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        /* Intro Section */
+        .intro {
+            padding: 100px 0;
+            text-align: center;
+            background-color: var(--bg-light);
+        }
+
+        .section-subtitle {
+            font-size: 0.85rem;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+            display: block;
+            font-weight: 600;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+        }
+
+        .intro p {
+            max-width: 750px;
+            margin: 0 auto;
+            color: #555;
+            font-size: 1.1rem;
+        }
+
+        /* Gallery Tour Section */
+        .gallery-section {
+            padding: 80px 0;
+            background-color: #ffffff;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            margin-top: 40px;
+        }
+
+        .gallery-item {
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            height: 220px;
+        }
+
+        .gallery-item-large {
+            grid-row: span 2;
+            height: 455px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item img:hover {
+            transform: scale(1.03);
+        }
+
+        /* Accommodations Section */
+        .rooms-section {
+            padding: 100px 0;
+            background-color: var(--bg-light);
+        }
+
+        .rooms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .room-card {
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            transition: var(--transition);
+        }
+
+        .room-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .room-card-img {
+            height: 280px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .room-card-content {
+            padding: 35px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .room-meta {
+            display: flex;
+            gap: 20px;
+            font-size: 0.85rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .room-meta span i {
+            margin-right: 5px;
+        }
+
+        .room-card h3 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .room-card p {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+            flex-grow: 1;
+        }
+
+        .room-specs {
+            list-style: none;
+            margin-bottom: 30px;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .room-specs li {
+            font-size: 0.85rem;
+            color: #444;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .room-specs li i {
+            color: var(--primary-color);
+        }
+
+        /* Call To Action Block */
+        .cta-booking {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .cta-booking h2 {
+            font-size: 2.4rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-booking p {
+            max-width: 600px;
+            margin: 0 auto 35px auto;
+            opacity: 0.9;
+            font-size: 1.05rem;
+        }
+
+        /* Floating WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 15px rgba(0,0,0,0.2);
+            z-index: 999;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            background-color: #1ebe57;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-dark);
+            color: rgba(255, 255, 255, 0.75);
+            padding: 60px 0 30px 0;
+            font-size: 0.9rem;
+        }
+
+        .footer-grid {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .footer-col h4 {
+            color: var(--text-light);
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .footer-col p {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .footer-col a {
+            color: rgba(255, 255, 255, 0.75);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-col a:hover {
+            color: var(--bg-light);
+        }
+
+        .footer-col .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin: 0 10px;
+            font-weight: 500;
+        }
+
+        /* Portrait View (Default Layout) */
+        .footer-logo-landscape-view {
+            display: none; /* Hidden on portrait */
+        }
+
+        .footer-logo-portrait-view {
+            display: block;
+            margin-bottom: 25px;
+            width: 100%;
+            max-width: 420px;
+        }
+
+        .footer-logo-portrait-view img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+
+        .footer-col {
+            margin-bottom: 40px;
+            width: 100%;
+        }
+
+        /* Landscape View Rules */
+        @media (orientation: landscape) {
+            .footer-grid {
+                display: grid;
+                grid-template-columns: 1fr 1.2fr 1fr; /* Logo | Contact | Socials */
+                gap: 40px;
+                align-items: start;
+                text-align: left;
+            }
+
+            .footer-logo-landscape-view {
+                display: block; /* Shown on landscape */
+                width: 100%;
+                max-width: 250px;
+            }
+
+            .footer-logo-landscape-view img {
+                width: 100%;
+                height: auto;
+                border-radius: 4px;
+            }
+
+            .footer-logo-portrait-view {
+                display: none; /* Hidden on landscape */
+            }
+
+            .footer-col {
+                margin-bottom: 0;
+                text-align: left;
+            }
+
+            .footer-col p {
+                justify-content: flex-start;
+                align-items: flex-start;
+            }
+
+            .footer-col .social-link {
+                margin: 0 15px 0 0;
+            }
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 30px;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        /* Mobile Layout */
+        @media (max-width: 992px) {
+            .rooms-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            .whatsapp-float {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/6281128070123?text=Hello%20D'Green%20Niravakuta%2C%20I%20would%20like%20to%20inquire%20about%20booking%20a%20stay." class="whatsapp-float" target="_blank" aria-label="Book on WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo-container">
+                    <img src="logo-square.jpg" alt="D'Green Niravakuta Logo" class="header-logo">
+                    <span class="logo-text">D'Green <span>Niravakuta</span></span>
+                </a>
+                <div class="nav-right">
+                    <ul class="nav-links">
+                        <li><a href="#about" data-translate="nav_about">About</a></li>
+                        <li><a href="#gallery" data-translate="nav_gallery">Gallery</a></li>
+                        <li><a href="#suites" data-translate="nav_suites">Our Suites</a></li>
+                        <li><a href="#contact" data-translate="nav_contact">Contact</a></li>
+                    </ul>
+                    <!-- Language Switcher -->
+                    <div class="lang-switch">
+                        <button class="lang-btn active" id="btn-en" onclick="switchLang('en')">EN</button>
+                        <span class="lang-divider">|</span>
+                        <button class="lang-btn" id="btn-id" onclick="switchLang('id')">ID</button>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content container">
+            <h1 data-translate="hero_title">Calm stay in the heart of Kuta</h1>
+            <p data-translate="hero_subtitle">Large comfortable suites for longer, better stays. Near everything you need.</p>
+            <div class="hero-cta">
+                <a href="https://wa.me/6281128070123?text=Hello%20D'Green%20Niravakuta%2C%20I%20would%20like%20to%20inquire%20about%20booking%20a%20suite." class="btn btn-whatsapp" target="_blank">
+                    <i class="fa-brands fa-whatsapp"></i> <span data-translate="hero_cta">Book via WhatsApp</span>
+                </a>
+                <a href="#suites" class="btn btn-outline" data-translate="hero_explore">Explore Suites</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="intro">
+        <div class="container">
+            <span class="section-subtitle" data-translate="about_subtitle">The Retreat</span>
+            <h2 class="section-title" data-translate="about_title">An Elegant Escape</h2>
+            <p data-translate="about_desc">D'Green Niravakuta blends luxury with the serenity of nature. Handcrafted teak wood details, modern private amenities, and a quiet outdoor swimming pool await you. We host premium suites to preserve absolute privacy and focus entirely on your relaxation.</p>
+        </div>
+    </section>
+
+    <!-- Visual Gallery Tour -->
+    <section id="gallery" class="gallery-section">
+        <div class="container">
+            <div style="text-align: center;">
+                <span class="section-subtitle" data-translate="gallery_subtitle">Visual Tour</span>
+                <h2 class="section-title" data-translate="gallery_title">Explore D'Green Niravakuta</h2>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item gallery-item-large">
+                    <img src="pool.jpg" alt="Lush Pool Area">
+                </div>
+                <div class="gallery-item">
+                    <img src="bed-main.jpg" alt="Suite Bedroom Design">
+                </div>
+                <div class="gallery-item">
+                    <img src="kitchen.jpg" alt="Private Kitchenette">
+                </div>
+                <div class="gallery-item">
+                    <img src="bathroom.jpg" alt="Modern Bathroom">
+                </div>
+                <div class="gallery-item">
+                    <img src="wardrobe.jpg" alt="Teak Wardrobe and TV Console">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Accommodations Section -->
+    <section id="suites" class="rooms-section">
+        <div class="container">
+            <div style="text-align: center;">
+                <span class="section-subtitle" data-translate="suites_subtitle">Accommodations</span>
+                <h2 class="section-title" data-translate="suites_title">Choose Your Sanctuary</h2>
+            </div>
+            
+            <div class="rooms-grid">
+                
+                <!-- Room 1: Junior Suite -->
+                <div class="room-card">
+                    <div class="room-card-img" style="background-image: url('bed-main.jpg');"></div>
+                    <div class="room-card-content">
+                        <div class="room-meta">
+                            <span><i class="fa-solid fa-maximize"></i> 45 m&sup2;</span>
+                        </div>
+                        <h3 data-translate="junior_title">Junior Suite</h3>
+                        <p data-translate="junior_desc">Our spacious Junior Suite offers a perfect layout featuring handcrafted teak wood accents, a premium double bed setup, and a private kitchenette. Seamless comfort and peace packaged in a 45m&sup2; layout.</p>
+                        <ul class="room-specs">
+                            <li><i class="fa-solid fa-bed"></i> <span data-translate="spec_bed_l">Large Double Bed</span></li>
+                            <li><i class="fa-solid fa-kitchen-set"></i> <span data-translate="spec_kitchen">Kitchenette & Fridge</span></li>
+                            <li><i class="fa-solid fa-snowflake"></i> <span data-translate="spec_ac">Air Conditioning</span></li>
+                            <li><i class="fa-solid fa-shower"></i> <span data-translate="spec_shower">Ensuite Bathroom</span></li>
+                            <li><i class="fa-solid fa-tv"></i> <span data-translate="spec_tv">Flat Screen TV</span></li>
+                            <li><i class="fa-solid fa-swimming-pool"></i> <span data-translate="spec_pool">Pool Access</span></li>
+                        </ul>
+                        <a href="https://wa.me/6281128070123?text=Hello%20D'Green%20Niravakuta%2C%20I%20would%20like%20to%20inquire%20about%20booking%20the%20Junior%20Suite." class="btn btn-whatsapp" target="_blank">
+                            <i class="fa-brands fa-whatsapp"></i> <span data-translate="btn_inquire_jr">Inquire Junior Suite</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Room 2: Suite -->
+                <div class="room-card">
+                    <div class="room-card-img" style="background-image: url('bed-side.jpg');"></div>
+                    <div class="room-card-content">
+                        <div class="room-meta">
+                            <span><i class="fa-solid fa-maximize"></i> 55 m&sup2;</span>
+                            <span><i class="fa-solid fa-eye" data-translate="room_view_suite">Premium Pool View</i></span>
+                        </div>
+                        <h3 data-translate="suite_title">Suite</h3>
+                        <p data-translate="suite_desc">Our grandest option. The Suite boasts a sprawling 55m&sup2; layout showcasing an extra-large premium double bed. Complete with elegant teak paneling, an integrated custom wardrobe, work desk, and fully fitted private kitchenette.</p>
+                        <ul class="room-specs">
+                            <li><i class="fa-solid fa-bed"></i> <span data-translate="spec_bed_xl">Extra Large Double Bed</span></li>
+                            <li><i class="fa-solid fa-kitchen-set"></i> <span data-translate="spec_kitchen">Kitchenette & Fridge</span></li>
+                            <li><i class="fa-solid fa-snowflake"></i> <span data-translate="spec_ac">Air Conditioning</span></li>
+                            <li><i class="fa-solid fa-shower"></i> <span data-translate="spec_shower">Ensuite Bathroom</span></li>
+                            <li><i class="fa-solid fa-tv"></i> <span data-translate="spec_tv">Flat Screen TV</span></li>
+                            <li><i class="fa-solid fa-swimming-pool"></i> <span data-translate="spec_pool">Pool Access</span></li>
+                        </ul>
+                        <a href="https://wa.me/6281128070123?text=Hello%20D'Green%20Niravakuta%2C%20I%20would%20like%20to%20inquire%20about%20booking%20the%20Suite." class="btn btn-whatsapp" target="_blank">
+                            <i class="fa-brands fa-whatsapp"></i> <span data-translate="btn_inquire_st">Inquire Suite</span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking CTA -->
+    <section class="cta-booking">
+        <div class="container">
+            <h2 data-translate="cta_title">Personalized Booking Experience</h2>
+            <p data-translate="cta_desc">To ensure a custom tailored stay, we accept reservations via WhatsApp, Email, or phone call. Contact our team directly to check room availability.</p>
+            <a href="https://wa.me/6281128070123?text=Hello%20D'Green%20Niravakuta%2C%20I%20would%20like%20to%20inquire%20about%20booking%20a%20stay." class="btn btn-whatsapp" target="_blank">
+                <i class="fa-brands fa-whatsapp"></i> <span data-translate="cta_btn">Chat with Us on WhatsApp</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                
+                <!-- Landscape Orientation Image: Square logo displayed on left -->
+                <div class="footer-logo-landscape-view">
+                    <img src="logo-square.jpg" alt="D'Green Niravakuta Logo">
+                </div>
+
+                <!-- Portrait Orientation Image: Landscape logo displayed above quick contact -->
+                <div class="footer-logo-portrait-view">
+                    <img src="logo-landscape.jpg" alt="D'Green Niravakuta Logo">
+                </div>
+
+                <!-- Quick Contact Column -->
+                <div class="footer-col">
+                    <h4 data-translate="footer_contact">Quick Contact</h4>
+                    <p><i class="fa-solid fa-envelope" style="color: var(--secondary-color);"></i> <a href="mailto:hello@dgreenniravakuta.com">hello@dgreenniravakuta.com</a></p>
+                    <p><i class="fa-solid fa-phone" style="color: var(--secondary-color);"></i> <a href="tel:081128070123">0811-2807-0123</a></p>
+                    <p>
+                        <i class="fa-solid fa-location-dot" style="color: var(--secondary-color);"></i>
+                        <span>Jl. Grand Dewi Sri No.88, Legian, Kec. Kuta, Kabupaten Badung, Bali 80361</span>
+                    </p>
+                </div>
+
+                <!-- Find & Follow Column -->
+                <div class="footer-col">
+                    <h4 data-translate="footer_social">Find & Follow Us</h4>
+                    <p>
+                        <a href="https://www.instagram.com/dgreenniravakuta" target="_blank" class="social-link">
+                            <i class="fa-brands fa-instagram" style="font-size: 1.2rem; color: var(--secondary-color);"></i> Instagram
+                        </a>
+                    </p>
+                    <p>
+                        <a href="https://maps.app.goo.gl/7E1rv2BynYwMyYUQ7?g_st=ac" target="_blank" class="social-link">
+                            <i class="fa-solid fa-map-location-dot" style="font-size: 1.2rem; color: var(--secondary-color);"></i> Google Maps
+                        </a>
+                    </p>
+                </div>
+
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 D'Green Niravakuta. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Translation Script -->
+    <script>
+        const translations = {
+            en: {
+                nav_about: "About",
+                nav_gallery: "Gallery",
+                nav_suites: "Our Suites",
+                nav_contact: "Contact",
+                hero_title: "Calm stay in the heart of Kuta",
+                hero_subtitle: "Large comfortable suites for longer, better stays. Near everything you need.",
+                hero_cta: "Book via WhatsApp",
+                hero_explore: "Explore Suites",
+                about_subtitle: "The Retreat",
+                about_title: "An Elegant Escape",
+                about_desc: "D'Green Niravakuta blends luxury with the serenity of nature. Handcrafted teak wood details, modern private amenities, and a quiet outdoor swimming pool await you. We host premium suites to preserve absolute privacy and focus entirely on your relaxation.",
+                gallery_subtitle: "Visual Tour",
+                gallery_title: "Explore D'Green Niravakuta",
+                suites_subtitle: "Accommodations",
+                suites_title: "Choose Your Sanctuary",
+                room_view_suite: "Premium Pool View",
+                junior_title: "Junior Suite",
+                junior_desc: "Our spacious Junior Suite offers a perfect layout featuring handcrafted teak wood accents, a premium double bed setup, and a private kitchenette. Seamless comfort and peace packaged in a 45m² layout.",
+                spec_bed_l: "Large Double Bed",
+                spec_kitchen: "Kitchenette & Fridge",
+                spec_ac: "Air Conditioning",
+                spec_shower: "Ensuite Bathroom",
+                spec_tv: "Flat Screen TV",
+                spec_pool: "Pool Access",
+                btn_inquire_jr: "Inquire Junior Suite",
+                suite_title: "Suite",
+                suite_desc: "Our grandest option. The Suite boasts a sprawling 55m² layout showcasing an extra-large premium double bed. Complete with elegant teak paneling, an integrated custom wardrobe, work desk, and fully fitted private kitchenette.",
+                spec_bed_xl: "Extra Large Double Bed",
+                btn_inquire_st: "Inquire Suite",
+                cta_title: "Personalized Booking Experience",
+                cta_desc: "To ensure a custom-tailored stay, we accept reservations via WhatsApp, Email, or phone call. Contact our team directly to check room availability.",
+                cta_btn: "Chat with Us on WhatsApp",
+                footer_contact: "Quick Contact",
+                footer_social: "Find & Follow Us"
+            },
+            id: {
+                nav_about: "Tentang",
+                nav_gallery: "Galeri",
+                nav_suites: "Kamar Kami",
+                nav_contact: "Kontak",
+                hero_title: "Menginap tenang di jantung kota Kuta",
+                hero_subtitle: "Suite besar dan nyaman untuk masa tinggal yang lebih lama & lebih baik. Dekat dengan semua kebutuhan Anda.",
+                hero_cta: "Pesan via WhatsApp",
+                hero_explore: "Lihat Kamar",
+                about_subtitle: "Tempat Istirahat",
+                about_title: "Pelarian yang Elegan",
+                about_desc: "D'Green Niravakuta memadukan kemewahan dengan ketenangan alam. Detail kayu jati buatan tangan, fasilitas pribadi yang modern, dan kolam renang luar ruangan yang tenang menanti Anda. Kami menyediakan suite premium untuk menjaga privasi mutlak dan fokus sepenuhnya pada kenyamanan Anda.",
+                gallery_subtitle: "Tur Visual",
+                gallery_title: "Jelajahi D'Green Niravakuta",
+                suites_subtitle: "Akomodasi",
+                suites_title: "Pilih Ruang Ketenangan Anda",
+                room_view_suite: "Pemandangan Kolam Premium",
+                junior_title: "Junior Suite",
+                junior_desc: "Junior Suite kami yang luas menawarkan tata letak sempurna yang menampilkan aksen kayu jati buatan tangan, tempat tidur double premium, dan dapur kecil pribadi. Kenyamanan dan ketenangan yang mulus dikemas dalam ruang seluas 45m².",
+                spec_bed_l: "Tempat Tidur Double Besar",
+                spec_kitchen: "Dapur Kecil & Kulkas",
+                spec_ac: "Pendingin Ruangan (AC)",
+                spec_shower: "Kamar Mandi Dalam",
+                spec_tv: "TV Layar Datar",
+                spec_pool: "Akses Kolam Renang",
+                btn_inquire_jr: "Tanyakan Junior Suite",
+                suite_title: "Suite",
+                suite_desc: "Pilihan termegah kami. Suite ini memiliki tata letak 55m² yang luas dengan tempat tidur double premium ekstra besar. Lengkap dengan panel kayu jati yang elegan, lemari pakaian kustom terintegrasi, meja kerja, dan dapur kecil pribadi yang lengkap.",
+                spec_bed_xl: "Tempat Tidur Double Ekstra Besar",
+                btn_inquire_st: "Tanyakan Suite",
+                cta_title: "Pengalaman Pemesanan Personalisasi",
+                cta_desc: "Untuk memastikan masa tinggal yang disesuaikan dengan kebutuhan Anda, kami menerima reservasi melalui WhatsApp, Email, atau telepon. Hubungi tim kami langsung untuk memeriksa ketersediaan kamar.",
+                cta_btn: "Chat Kami di WhatsApp",
+                footer_contact: "Kontak Cepat",
+                footer_social: "Temukan & Ikuti Kami"
+            }
+        };
+
+        function switchLang(lang) {
+            // Update Active Class on Buttons
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(`btn-${lang}`).classList.add('active');
+
+            // Update Text on Elements
+            document.querySelectorAll('[data-translate]').forEach(el => {
+                const key = el.getAttribute('data-translate');
+                if (translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+        }
+    </script>
+</body>
+</html>
