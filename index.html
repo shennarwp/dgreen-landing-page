@@ -64,6 +64,16 @@
             cursor: pointer;
         }
 
+        .btn-primary {
+            background-color: var(--secondary-color);
+            color: var(--text-light);
+        }
+
+        .btn-primary:hover {
+            background-color: #9c6c41; /* Slightly darker shade of gold */
+            transform: translateY(-2px);
+        }
+
         .btn-whatsapp {
             background-color: #25d366;
             color: var(--text-light);
@@ -610,8 +620,11 @@
             <h1 data-translate="hero_title">Calm stay in the heart of Kuta</h1>
             <p data-translate="hero_subtitle">Large comfortable suites for longer, better stays. Near everything you need.</p>
             <div class="hero-cta">
+                <a href="https://be.vhpconnect.e1-vhp.com/en/32-dgreen-nirava-kuta" class="btn btn-primary" target="_blank">
+                    <i class="fa-solid fa-calendar-days"></i> <span data-translate="hero_search">Search Rooms</span>
+                </a>
                 <a href="https://wa.me/6281128070123?text=Hello%20D'Green%20Niravakuta%2C%20I%20would%20like%20to%20inquire%20about%20booking%20a%20suite." class="btn btn-whatsapp" target="_blank">
-                    <i class="fa-brands fa-whatsapp"></i> <span data-translate="hero_cta">Book via WhatsApp</span>
+                    <i class="fa-brands fa-whatsapp"></i> <span data-translate="hero_cta">Contact us on WhatsApp</span>
                 </a>
                 <a href="#suites" class="btn btn-outline" data-translate="hero_explore">Explore Suites</a>
             </div>
@@ -720,9 +733,14 @@
         <div class="container">
             <h2 data-translate="cta_title">Personalized Booking Experience</h2>
             <p data-translate="cta_desc">To ensure a custom tailored stay, we accept reservations via WhatsApp, Email, or phone call. Contact our team directly to check room availability.</p>
-            <a href="https://wa.me/6281128070123?text=Hello%20D'Green%20Niravakuta%2C%20I%20would%20like%20to%20inquire%20about%20booking%20a%20stay." class="btn btn-whatsapp" target="_blank">
-                <i class="fa-brands fa-whatsapp"></i> <span data-translate="cta_btn">Chat with Us on WhatsApp</span>
-            </a>
+            <div class="hero-cta" style="margin-top: 20px;">
+                <a href="https://be.vhpconnect.e1-vhp.com/en/32-dgreen-nirava-kuta" class="btn btn-primary" target="_blank">
+                    <i class="fa-solid fa-calendar-days"></i> <span data-translate="hero_search">Search Rooms</span>
+                </a>
+                <a href="https://wa.me/6281128070123?text=Hello%20D'Green%20Niravakuta%2C%20I%20would%20like%20to%20inquire%20about%20booking%20a%20stay." class="btn btn-whatsapp" target="_blank">
+                    <i class="fa-brands fa-whatsapp"></i> <span data-translate="cta_btn">Contact us on WhatsApp</span>
+                </a>
+            </div>
         </div>
     </section>
 
@@ -785,7 +803,8 @@
                 nav_contact: "Contact",
                 hero_title: "Calm stay in the heart of Kuta",
                 hero_subtitle: "Large comfortable suites for longer, better stays. Near everything you need.",
-                hero_cta: "Book via WhatsApp",
+                hero_cta: "Contact us on WhatsApp",
+                hero_search: "Search Rooms",
                 hero_explore: "Explore Suites",
                 about_subtitle: "The Retreat",
                 about_title: "An Elegant Escape",
@@ -810,7 +829,7 @@
                 btn_inquire_st: "Inquire Suite",
                 cta_title: "Personalized Booking Experience",
                 cta_desc: "To ensure a custom-tailored stay, we accept reservations via WhatsApp, Email, or phone call. Contact our team directly to check room availability.",
-                cta_btn: "Chat with Us on WhatsApp",
+                cta_btn: "Contact us on WhatsApp",
                 footer_contact: "Quick Contact",
                 footer_social: "Find & Follow Us"
             },
@@ -821,7 +840,8 @@
                 nav_contact: "Kontak",
                 hero_title: "Menginap tenang di jantung kota Kuta",
                 hero_subtitle: "Suite besar dan nyaman untuk masa tinggal yang lebih lama & lebih baik. Dekat dengan semua kebutuhan Anda.",
-                hero_cta: "Pesan via WhatsApp",
+                hero_cta: "Hubungi kami via WhatsApp",
+                hero_search: "Cari Kamar",
                 hero_explore: "Lihat Kamar",
                 about_subtitle: "Tempat Istirahat",
                 about_title: "Pelarian yang Elegan",
@@ -846,7 +866,7 @@
                 btn_inquire_st: "Tanyakan Suite",
                 cta_title: "Pengalaman Pemesanan Personalisasi",
                 cta_desc: "Untuk memastikan masa tinggal yang disesuaikan dengan kebutuhan Anda, kami menerima reservasi melalui WhatsApp, Email, atau telepon. Hubungi tim kami langsung untuk memeriksa ketersediaan kamar.",
-                cta_btn: "Chat Kami di WhatsApp",
+                cta_btn: "Hubungi kami via WhatsApp",
                 footer_contact: "Kontak Cepat",
                 footer_social: "Temukan & Ikuti Kami"
             }
