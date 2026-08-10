@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>D'Green Niravakuta | Boutique Stay</title>
+    <!-- Social Share Preview (OpenGraph) -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="D'Green Niravakuta">
+    <meta property="og:title" content="D'Green Niravakuta | Boutique Stay in Kuta, Bali">
+    <meta property="og:description" content="Calm boutique stay in the heart of Kuta. Large comfortable suites with handcrafted teak wood, a quiet outdoor pool, and total privacy.">
+    <meta property="og:image" content="https://dgreenniravakuta.com/pool.jpg">
+    <meta property="og:url" content="https://dgreenniravakuta.com/">
+    <meta name="twitter:card" content="summary_large_image">
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <!-- FontAwesome Icons -->
@@ -361,6 +369,7 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
             height: 220px;
             position: relative;
+            cursor: pointer;
         }
 
         .gallery-item::after {
@@ -369,6 +378,7 @@
             inset: 0;
             background-color: rgba(60, 72, 54, 0);
             transition: var(--transition);
+            pointer-events: none;
         }
 
         .gallery-item:hover::after {
@@ -431,6 +441,7 @@
             inset: 0;
             background-color: rgba(60, 72, 54, 0);
             transition: var(--transition);
+            pointer-events: none;
         }
 
         .room-card:hover .room-card-img::after {
@@ -688,6 +699,322 @@
                 font-size: 24px;
             }
         }
+
+        /* Hero Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.4rem;
+            text-decoration: none;
+            animation: scroll-bounce 2s infinite;
+            z-index: 5;
+        }
+
+        .scroll-indicator:hover {
+            color: #ffffff;
+        }
+
+        @keyframes scroll-bounce {
+            0%, 100% { transform: translate(-50%, 0); }
+            50% { transform: translate(-50%, 10px); }
+        }
+
+        /* Amenities Strip */
+        .amenities-strip {
+            background-color: var(--primary-dark);
+            padding: 20px 0;
+        }
+
+        .amenities-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .amenities-list li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-light);
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .amenities-list li i {
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+        }
+
+        /* Reviews Section */
+        .reviews-section {
+            padding: 70px 0;
+            background-color: var(--bg-light);
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .review-card {
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .review-stars {
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .review-card blockquote {
+            font-size: 0.95rem;
+            color: #555;
+            font-style: italic;
+            line-height: 1.6;
+            flex-grow: 1;
+            margin-bottom: 20px;
+        }
+
+        .review-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .review-avatar {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .review-author strong {
+            display: block;
+            color: var(--text-dark);
+            font-size: 0.9rem;
+        }
+
+        .review-author span {
+            color: #888;
+            font-size: 0.78rem;
+        }
+
+        /* Location Section */
+        .location-section {
+            padding: 70px 0;
+            background-color: var(--bg-light);
+        }
+
+        .location-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: stretch;
+            margin-top: 40px;
+        }
+
+        .location-info h3 {
+            font-size: 1.4rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .location-info p {
+            color: #555;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .distance-list {
+            list-style: none;
+            margin-top: 25px;
+        }
+
+        .distance-list li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(60, 72, 54, 0.12);
+            font-size: 0.9rem;
+            color: #444;
+        }
+
+        .distance-list li i {
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+            width: 22px;
+            text-align: center;
+        }
+
+        .map-embed {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            min-height: 320px;
+        }
+
+        .map-embed iframe {
+            width: 100%;
+            height: 100%;
+            min-height: 320px;
+            border: 0;
+            display: block;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background-color: rgba(20, 22, 19, 0.94);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            z-index: 2000;
+            cursor: zoom-out;
+        }
+
+        .lightbox.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .lightbox-img {
+            max-width: 90vw;
+            max-height: 85vh;
+            border-radius: 6px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.5);
+        }
+
+        .lightbox-btn {
+            position: absolute;
+            background: rgba(255,255,255,0.1);
+            border: none;
+            color: #fff;
+            font-size: 1.6rem;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            z-index: 2001;
+        }
+
+        .lightbox-btn:hover {
+            background: rgba(255,255,255,0.25);
+        }
+
+        .lightbox-close {
+            top: 20px;
+            right: 20px;
+        }
+
+        .lightbox-prev {
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .lightbox-next {
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .lightbox-counter {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255,255,255,0.7);
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        /* Scroll-in Reveal Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        .reveal-d1 { transition-delay: 0.1s; }
+        .reveal-d2 { transition-delay: 0.2s; }
+        .reveal-d3 { transition-delay: 0.3s; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .scroll-indicator {
+                animation: none;
+            }
+            .reveal {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+        }
+
+        /* Responsive: new sections */
+        @media (max-width: 992px) {
+            .reviews-grid {
+                grid-template-columns: 1fr;
+                max-width: 480px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .location-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .amenities-list {
+                gap: 18px;
+            }
+            .lightbox-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+            .lightbox-prev {
+                left: 10px;
+            }
+            .lightbox-next {
+                right: 10px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -738,6 +1065,22 @@
                 <a href="#suites" class="btn btn-outline" data-translate="hero_explore">Explore Suites</a>
             </div>
         </div>
+        <a href="#about" class="scroll-indicator" aria-label="Scroll down">
+            <i class="fa-solid fa-chevron-down"></i>
+        </a>
+    </section>
+
+    <!-- Amenities Strip -->
+    <section class="amenities-strip" aria-label="Amenities">
+        <div class="container">
+            <ul class="amenities-list">
+                <li><i class="fa-solid fa-wifi"></i> <span data-translate="amen_wifi">Free Wi-Fi</span></li>
+                <li><i class="fa-solid fa-snowflake"></i> <span data-translate="amen_ac">Air Conditioning</span></li>
+                <li><i class="fa-solid fa-kitchen-set"></i> <span data-translate="amen_kitchen">Kitchen &amp; Fridge</span></li>
+                <li><i class="fa-solid fa-square-parking"></i> <span data-translate="amen_parking">Parking</span></li>
+                <li><i class="fa-solid fa-water"></i> <span data-translate="amen_pool">Outdoor Pool</span></li>
+            </ul>
+        </div>
     </section>
 
     <!-- About Section -->
@@ -747,17 +1090,17 @@
             <h2 class="section-title" data-translate="about_title">An Elegant Escape</h2>
             <p data-translate="about_desc">D'Green Niravakuta blends luxury with the serenity of nature. Handcrafted teak wood details, modern private amenities, and a quiet outdoor swimming pool await you. We host premium suites to preserve absolute privacy and focus entirely on your relaxation.</p>
             <div class="intro-features">
-                <div class="intro-feature">
+                <div class="intro-feature reveal">
                     <i class="fa-solid fa-tree"></i>
                     <h3 data-translate="about_feat1_t">Handcrafted Teak</h3>
                     <p data-translate="about_feat1_d">Custom woodwork details in every suite</p>
                 </div>
-                <div class="intro-feature">
+                <div class="intro-feature reveal reveal-d1">
                     <i class="fa-solid fa-water"></i>
                     <h3 data-translate="about_feat2_t">Outdoor Pool</h3>
                     <p data-translate="about_feat2_d">Quiet private pool access on-site</p>
                 </div>
-                <div class="intro-feature">
+                <div class="intro-feature reveal reveal-d2">
                     <i class="fa-solid fa-door-closed"></i>
                     <h3 data-translate="about_feat3_t">Total Privacy</h3>
                     <p data-translate="about_feat3_d">Premium suites for pure relaxation</p>
@@ -774,20 +1117,20 @@
                 <h2 class="section-title" data-translate="gallery_title">Explore D'Green Niravakuta</h2>
             </div>
             <div class="gallery-grid">
-                <div class="gallery-item gallery-item-large">
-                    <img src="pool.jpg" alt="Lush Pool Area">
+                <div class="gallery-item gallery-item-large reveal">
+                    <img src="pool.jpg" alt="Lush Pool Area" loading="lazy" decoding="async" data-lightbox="pool.jpg" data-caption="Lush Pool Area">
                 </div>
-                <div class="gallery-item">
-                    <img src="room-junior-suite.jpg" alt="Junior Suite Bedroom Design">
+                <div class="gallery-item reveal reveal-d1">
+                    <img src="room-junior-suite.jpg" alt="Junior Suite Bedroom Design" loading="lazy" decoding="async" data-lightbox="room-junior-suite.jpg" data-caption="Junior Suite Bedroom Design">
                 </div>
-                <div class="gallery-item">
-                    <img src="kitchen.jpg" alt="Private Kitchenette">
+                <div class="gallery-item reveal reveal-d2">
+                    <img src="kitchen.jpg" alt="Private Kitchenette" loading="lazy" decoding="async" data-lightbox="kitchen.jpg" data-caption="Private Kitchenette">
                 </div>
-                <div class="gallery-item">
-                    <img src="bathroom.jpg" alt="Modern Bathroom">
+                <div class="gallery-item reveal reveal-d1">
+                    <img src="bathroom.jpg" alt="Modern Bathroom" loading="lazy" decoding="async" data-lightbox="bathroom.jpg" data-caption="Modern Bathroom">
                 </div>
-                <div class="gallery-item">
-                    <img src="wardrobe.jpg" alt="Teak Wardrobe and TV Console">
+                <div class="gallery-item reveal reveal-d2">
+                    <img src="wardrobe.jpg" alt="Teak Wardrobe and TV Console" loading="lazy" decoding="async" data-lightbox="wardrobe.jpg" data-caption="Teak Wardrobe and TV Console">
                 </div>
             </div>
         </div>
@@ -804,8 +1147,8 @@
             <div class="rooms-grid">
                 
                 <!-- Room 1: Junior Suite -->
-                <div class="room-card">
-                    <div class="room-card-img" style="background-image: url('room-junior-suite.jpg');"></div>
+                <div class="room-card reveal">
+                    <div class="room-card-img" style="background-image: url('room-junior-suite.jpg');" data-lightbox-bg="room-junior-suite.jpg" data-caption="Junior Suite"></div>
                     <div class="room-card-content">
                         <div class="room-meta">
                             <span><i class="fa-solid fa-maximize"></i> 45 m&sup2;</span>
@@ -827,8 +1170,8 @@
                 </div>
 
                 <!-- Room 2: Suite -->
-                <div class="room-card">
-                    <div class="room-card-img" style="background-image: url('room-suite.jpg');"></div>
+                <div class="room-card reveal reveal-d1">
+                    <div class="room-card-img" style="background-image: url('room-suite.jpg');" data-lightbox-bg="room-suite.jpg" data-caption="Suite"></div>
                     <div class="room-card-content">
                         <div class="room-meta">
                             <span><i class="fa-solid fa-maximize"></i> 55 m&sup2;</span>
@@ -867,6 +1210,79 @@
         </div>
     </section>
 
+    <!-- Reviews Section -->
+    <section id="reviews" class="reviews-section">
+        <div class="container">
+            <div style="text-align: center;">
+                <span class="section-subtitle" data-translate="reviews_subtitle">Guest Stories</span>
+                <h2 class="section-title" data-translate="reviews_title">Loved by Our Guests</h2>
+            </div>
+            <div class="reviews-grid">
+                <div class="review-card reveal">
+                    <div class="review-stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <blockquote data-translate="review_1">"The room is very big, they have kitchenette, swimming pool is good too, staff is okay. I really recommend it for all of you guys."</blockquote>
+                    <div class="review-author">
+                        <div class="review-avatar">S</div>
+                        <div><strong>Steven Siby</strong><span data-translate="review_1_src">2 months ago on Google</span></div>
+                    </div>
+                </div>
+                <div class="review-card reveal reveal-d1">
+                    <div class="review-stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <blockquote data-translate="review_2">"It's in a very convenient location, with many convenience stores, spas, and restaurants nearby."</blockquote>
+                    <div class="review-author">
+                        <div class="review-avatar">T</div>
+                        <div><strong>TOKOあげは</strong><span data-translate="review_2_src">3 months ago on Google</span></div>
+                    </div>
+                </div>
+                <div class="review-card reveal reveal-d2">
+                    <div class="review-stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <blockquote data-translate="review_3">"I've stayed here before and would stay here again. It's one of my go-to accommodation locations in Kuta, Bali. Good value for the money and the staff is good."</blockquote>
+                    <div class="review-author">
+                        <div class="review-avatar">D</div>
+                        <div><strong>Darrell Bibby</strong><span data-translate="review_3_src">4 months ago on Google</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Location Section -->
+    <section id="location" class="location-section">
+        <div class="container">
+            <div style="text-align: center;">
+                <span class="section-subtitle" data-translate="location_subtitle">Find Us</span>
+                <h2 class="section-title" data-translate="location_title">In the Heart of Kuta</h2>
+            </div>
+            <div class="location-grid">
+                <div class="location-info reveal">
+                    <h3 data-translate="location_name">D'Green Niravakuta</h3>
+                    <p data-translate="location_addr">Jl. Grand Dewi Sri No.88, Legian, Kec. Kuta, Kabupaten Badung, Bali 80361</p>
+                    <p data-translate="location_desc">Set in a quiet corner of Legian, our boutique stay keeps you close to the best of Kuta while feeling far from the crowd.</p>
+                    <ul class="distance-list">
+                        <li><i class="fa-solid fa-umbrella-beach"></i> <span data-translate="loc_beach">5-minute walk to Legian Beach</span></li>
+                        <li><i class="fa-solid fa-plane"></i> <span data-translate="loc_airport">20 minutes from Ngurah Rai Airport</span></li>
+                        <li><i class="fa-solid fa-store"></i> <span data-translate="loc_shopping">Shops, cafés &amp; nightlife nearby</span></li>
+                        <li><i class="fa-solid fa-car"></i> <span data-translate="loc_parking">Free on-site parking</span></li>
+                    </ul>
+                </div>
+                <div class="map-embed reveal reveal-d1">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3943.909573981431!2d115.17587089999999!3d-8.700137199999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd247cc348706bb%3A0x3d23d5da62e9df27!2sD%E2%80%99Green%20Nirava%20Kuta%20By%20Reccoma!5e0!3m2!1sen!2sde!4v1786370597007!5m2!1sen!2sde"
+                        title="D'Green Niravakuta on Google Maps"
+                        loading="lazy"
+                        allowfullscreen
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer id="contact">
         <div class="container">
@@ -874,12 +1290,12 @@
                 
                 <!-- Landscape Orientation Image: Square logo displayed on left -->
                 <div class="footer-logo-landscape-view">
-                    <img src="logo-square.jpg" alt="D'Green Niravakuta Logo">
+                    <img src="logo-square.jpg" alt="D'Green Niravakuta Logo" loading="lazy" decoding="async">
                 </div>
 
                 <!-- Portrait Orientation Image: Landscape logo displayed above quick contact -->
                 <div class="footer-logo-portrait-view">
-                    <img src="logo-landscape.jpg" alt="D'Green Niravakuta Logo">
+                    <img src="logo-landscape.jpg" alt="D'Green Niravakuta Logo" loading="lazy" decoding="async">
                 </div>
 
                 <!-- Quick Contact Column -->
@@ -916,6 +1332,15 @@
         </div>
     </footer>
 
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="Image viewer">
+        <button class="lightbox-btn lightbox-close" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+        <button class="lightbox-btn lightbox-prev" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
+        <img class="lightbox-img" src="" alt="">
+        <button class="lightbox-btn lightbox-next" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
+        <div class="lightbox-counter"></div>
+    </div>
+
     <!-- Translation Script -->
     <script>
         const translations = {
@@ -929,6 +1354,28 @@
                 hero_cta: "Contact us on WhatsApp",
                 hero_search: "Search Rooms",
                 hero_explore: "Explore Suites",
+                amen_wifi: "Free Wi-Fi",
+                amen_ac: "Air Conditioning",
+                amen_kitchen: "Kitchen & Fridge",
+                amen_parking: "Parking",
+                amen_pool: "Outdoor Pool",
+                reviews_subtitle: "Guest Stories",
+                reviews_title: "Loved by Our Guests",
+                review_1: "The room is very big, they have kitchenette, swimming pool is good too, staff is okay. I really recommend it for all of you guys.",
+                review_1_src: "2 months ago on Google",
+                review_2: "It's in a very convenient location, with many convenience stores, spas, and restaurants nearby.",
+                review_2_src: "3 months ago on Google",
+                review_3: "I've stayed here before and would stay here again. It's one of my go-to accommodation locations in Kuta, Bali. Good value for the money and the staff is good.",
+                review_3_src: "4 months ago on Google",
+                location_subtitle: "Find Us",
+                location_title: "In the Heart of Kuta",
+                location_name: "D'Green Niravakuta",
+                location_addr: "Jl. Grand Dewi Sri No.88, Legian, Kec. Kuta, Kabupaten Badung, Bali 80361",
+                location_desc: "Set in a quiet corner of Legian, our boutique stay keeps you close to the best of Kuta while feeling far from the crowd.",
+                loc_beach: "5-minute walk to Legian Beach",
+                loc_airport: "20 minutes from Ngurah Rai Airport",
+                loc_shopping: "Shops, cafés & nightlife nearby",
+                loc_parking: "Free on-site parking",
                 about_subtitle: "The Retreat",
                 about_title: "An Elegant Escape",
                 about_desc: "D'Green Niravakuta blends luxury with the serenity of nature. Handcrafted teak wood details, modern private amenities, and a quiet outdoor swimming pool await you. We host premium suites to preserve absolute privacy and focus entirely on your relaxation.",
@@ -972,6 +1419,28 @@
                 hero_cta: "Hubungi kami via WhatsApp",
                 hero_search: "Cari Kamar",
                 hero_explore: "Lihat Kamar",
+                amen_wifi: "Wi-Fi Gratis",
+                amen_ac: "Pendingin Ruangan",
+                amen_kitchen: "Dapur & Kulkas",
+                amen_parking: "Parkir",
+                amen_pool: "Kolam Renang",
+                reviews_subtitle: "Cerita Tamu",
+                reviews_title: "Disukai Para Tamu",
+                review_1: "Kamarnya sangat besar, ada dapur kecil, kolam renangnya juga bagus, stafnya baik. Saya sangat merekomendasikannya untuk kalian semua.",
+                review_1_src: "2 bulan lalu di Google",
+                review_2: "Lokasinya sangat strategis, dengan banyak toko, spa, dan restoran di dekatnya.",
+                review_2_src: "3 bulan lalu di Google",
+                review_3: "Saya pernah menginap di sini sebelumnya dan akan menginap lagi. Ini salah satu tempat penginapan pilihan saya di Kuta, Bali. Nilai uang yang bagus dan stafnya baik.",
+                review_3_src: "4 bulan lalu di Google",
+                location_subtitle: "Lokasi Kami",
+                location_title: "Di Jantung Kuta",
+                location_name: "D'Green Niravakuta",
+                location_addr: "Jl. Grand Dewi Sri No.88, Legian, Kec. Kuta, Kabupaten Badung, Bali 80361",
+                location_desc: "Terletak di sudut Legian yang tenang, penginapan butik kami membuat Anda dekat dengan tempat terbaik di Kuta namun terasa jauh dari keramaian.",
+                loc_beach: "5 menit jalan kaki ke Pantai Legian",
+                loc_airport: "20 menit dari Bandara Ngurah Rai",
+                loc_shopping: "Toko, kafe & hiburan malam di dekatnya",
+                loc_parking: "Parkir gratis di lokasi",
                 about_subtitle: "Tempat Istirahat",
                 about_title: "Pelarian yang Elegan",
                 about_desc: "D'Green Niravakuta memadukan kemewahan dengan ketenangan alam. Detail kayu jati buatan tangan, fasilitas pribadi yang modern, dan kolam renang luar ruangan yang tenang menanti Anda. Kami menyediakan suite premium untuk menjaga privasi mutlak dan fokus sepenuhnya pada kenyamanan Anda.",
@@ -1037,6 +1506,68 @@
 
         window.addEventListener('scroll', updateActiveNav);
         window.addEventListener('load', updateActiveNav);
+
+        /* Scroll-in Reveal */
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+        /* Lightbox */
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = lightbox.querySelector('.lightbox-img');
+        const lightboxCounter = lightbox.querySelector('.lightbox-counter');
+        const lbSources = Array.from(document.querySelectorAll('img[data-lightbox]'))
+            .map(img => ({ src: img.getAttribute('data-lightbox'), caption: img.getAttribute('data-caption') || '' }));
+        document.querySelectorAll('[data-lightbox-bg]').forEach(el => {
+            lbSources.push({ src: el.getAttribute('data-lightbox-bg'), caption: el.getAttribute('data-caption') || '' });
+        });
+        let lbIndex = 0;
+
+        function openLightbox(index) {
+            lbIndex = (index + lbSources.length) % lbSources.length;
+            lightboxImg.src = lbSources[lbIndex].src;
+            lightboxImg.alt = lbSources[lbIndex].caption;
+            lightboxCounter.textContent = `${lbIndex + 1} / ${lbSources.length}`;
+            lightbox.classList.add('open');
+            lightbox.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('open');
+            lightbox.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+        }
+
+        document.querySelectorAll('img[data-lightbox]').forEach((img, i) => {
+            img.addEventListener('click', () => openLightbox(i));
+        });
+        document.querySelectorAll('[data-lightbox-bg]').forEach(el => {
+            el.addEventListener('click', () => {
+                const src = el.getAttribute('data-lightbox-bg');
+                const idx = lbSources.findIndex(s => s.src === src);
+                openLightbox(idx);
+            });
+        });
+
+        lightbox.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
+        lightbox.querySelector('.lightbox-prev').addEventListener('click', () => openLightbox(lbIndex - 1));
+        lightbox.querySelector('.lightbox-next').addEventListener('click', () => openLightbox(lbIndex + 1));
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('open')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') openLightbox(lbIndex - 1);
+            if (e.key === 'ArrowRight') openLightbox(lbIndex + 1);
+        });
     </script>
 </body>
 </html>
