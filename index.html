@@ -17,12 +17,13 @@
     
     <style>
         :root {
-            --primary-color: #4b533c; /* Exact logo green */
-            --primary-dark: #373d2c;
-            --secondary-color: #b37d4e; /* Teak Gold */
-            --text-dark: #2c2c2c;
+            --primary-color: #4e5d44; /* Sage-olive green (logo green refreshed with pool's natural tone) */
+            --primary-dark: #3c4836;
+            --secondary-color: #b8894f; /* Teak honey gold (matches room-suite teak wood) */
+            --text-dark: #2e302b;
             --text-light: #ffffff;
-            --bg-light: #f6f3eb; /* Exact logo background cream */
+            --bg-light: #f7f1e9; /* Warm cream, same as logo background */
+            --logo-bg: #f7f1e9; /* Exact logo background cream */
             --transition: all 0.3s ease;
         }
 
@@ -31,6 +32,11 @@
             padding: 0;
             box-sizing: border-box;
             scroll-behavior: smooth;
+        }
+
+        ::selection {
+            background-color: var(--primary-dark);
+            color: var(--text-light);
         }
 
         body {
@@ -67,12 +73,12 @@
         }
 
         .btn-primary {
-            background-color: var(--secondary-color);
+            background-color: var(--primary-dark);
             color: var(--text-light);
         }
 
         .btn-primary:hover {
-            background-color: #9c6c41; /* Slightly darker shade of gold */
+            background-color: #333d2e; /* Slightly darker shade of sage green */
             transform: translateY(-2px);
         }
 
@@ -102,10 +108,10 @@
             top: 0;
             left: 0;
             width: 100%;
-            background-color: rgba(75, 83, 60, 0.96); /* Exact Logo Green with transparency */
+            background-color: var(--logo-bg); /* Same cream as logo */
             backdrop-filter: blur(10px);
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
         }
 
         nav {
@@ -129,14 +135,14 @@
         }
 
         .logo-text {
-            color: var(--text-light);
+            color: var(--primary-color);
             font-size: 1.4rem;
             font-weight: 700;
             letter-spacing: 0.5px;
         }
 
         .logo-text span {
-            color: var(--bg-light);
+            color: var(--secondary-color);
             font-weight: 400;
         }
 
@@ -153,17 +159,37 @@
         }
 
         .nav-links a {
-            color: var(--text-light);
+            color: var(--primary-color);
             text-decoration: none;
             font-size: 0.9rem;
             font-weight: 500;
             letter-spacing: 1px;
             text-transform: uppercase;
             transition: var(--transition);
+            position: relative;
+            padding-bottom: 4px;
         }
 
-        .nav-links a:hover {
-            color: var(--bg-light);
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary-dark);
+            transform: scaleX(0);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            transform: scaleX(1);
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary-dark);
         }
 
         /* Language Switcher */
@@ -171,7 +197,7 @@
             display: flex;
             align-items: center;
             gap: 5px;
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(0, 0, 0, 0.05);
             padding: 4px 10px;
             border-radius: 20px;
         }
@@ -179,7 +205,7 @@
         .lang-btn {
             background: none;
             border: none;
-            color: rgba(255, 255, 255, 0.6);
+            color: rgba(78, 93, 68, 0.6);
             font-size: 0.8rem;
             font-weight: 600;
             cursor: pointer;
@@ -188,18 +214,22 @@
         }
 
         .lang-btn.active {
-            color: var(--text-light);
+            color: var(--primary-color);
         }
 
         .lang-divider {
-            color: rgba(255, 255, 255, 0.3);
+            color: rgba(0, 0, 0, 0.25);
             font-size: 0.8rem;
         }
 
         /* Hero Section */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.55)), url('pool.jpg') no-repeat center center/cover;
+            background:
+                linear-gradient(to bottom, var(--logo-bg), rgba(247, 241, 233, 0) 12%),
+                radial-gradient(ellipse 75% 65% at 50% 55%, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.28) 55%, rgba(0,0,0,0) 78%),
+                linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.35)),
+                url('pool.jpg') no-repeat center center/cover;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -216,6 +246,7 @@
             margin-left: auto;
             margin-right: auto;
             line-height: 1.3;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.65), 0 6px 24px rgba(0,0,0,0.5);
         }
 
         .hero-content p {
@@ -227,6 +258,7 @@
             font-weight: 300;
             opacity: 0.95;
             line-height: 1.6;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.65), 0 4px 14px rgba(0,0,0,0.45);
         }
 
         .hero-cta {
@@ -238,7 +270,7 @@
 
         /* Intro Section */
         .intro {
-            padding: 100px 0;
+            padding: 70px 0;
             text-align: center;
             background-color: var(--bg-light);
         }
@@ -251,6 +283,15 @@
             margin-bottom: 15px;
             display: block;
             font-weight: 600;
+        }
+
+        .section-subtitle::after {
+            content: "";
+            display: block;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary-dark);
+            margin: 12px auto 0 auto;
         }
 
         .section-title {
@@ -266,10 +307,45 @@
             font-size: 1.1rem;
         }
 
+        .intro-features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin: 50px auto 0 auto;
+            max-width: 900px;
+        }
+
+        .intro-feature {
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 30px 25px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+            text-align: center;
+        }
+
+        .intro-feature i {
+            font-size: 1.7rem;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .intro-feature h3 {
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+        }
+
+        .intro-feature p {
+            font-size: 0.9rem;
+            color: #666;
+            margin: 0;
+        }
+
         /* Gallery Tour Section */
         .gallery-section {
-            padding: 80px 0;
-            background-color: #ffffff;
+            padding: 60px 0;
+            background-color: var(--bg-light);
         }
 
         .gallery-grid {
@@ -284,6 +360,19 @@
             overflow: hidden;
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
             height: 220px;
+            position: relative;
+        }
+
+        .gallery-item::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-color: rgba(60, 72, 54, 0);
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover::after {
+            background-color: rgba(60, 72, 54, 0.35);
         }
 
         .gallery-item-large {
@@ -304,7 +393,7 @@
 
         /* Accommodations Section */
         .rooms-section {
-            padding: 100px 0;
+            padding: 70px 0;
             background-color: var(--bg-light);
         }
 
@@ -333,6 +422,19 @@
             height: 280px;
             background-size: cover;
             background-position: center;
+            position: relative;
+        }
+
+        .room-card-img::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-color: rgba(60, 72, 54, 0);
+            transition: var(--transition);
+        }
+
+        .room-card:hover .room-card-img::after {
+            background-color: rgba(60, 72, 54, 0.3);
         }
 
         .room-card-content {
@@ -392,23 +494,24 @@
             color: var(--primary-color);
         }
 
-        /* Call To Action Block */
+        /* Booking CTA Block */
         .cta-booking {
-            background-color: var(--primary-color);
-            color: var(--text-light);
-            padding: 80px 0;
+            margin-top: 40px;
+            padding-top: 40px;
             text-align: center;
+            color: var(--text-dark);
         }
 
         .cta-booking h2 {
-            font-size: 2.4rem;
+            font-size: 2.2rem;
+            color: var(--primary-color);
             margin-bottom: 20px;
         }
 
         .cta-booking p {
             max-width: 600px;
             margin: 0 auto 35px auto;
-            opacity: 0.9;
+            color: #555;
             font-size: 1.05rem;
         }
 
@@ -439,9 +542,9 @@
 
         /* Footer */
         footer {
-            background-color: var(--primary-dark);
-            color: rgba(255, 255, 255, 0.75);
-            padding: 60px 0 30px 0;
+            background-color: var(--logo-bg); /* Same cream as logo */
+            color: rgba(46, 48, 43, 0.8);
+            padding: 50px 0 25px 0;
             font-size: 0.9rem;
         }
 
@@ -453,7 +556,7 @@
         }
 
         .footer-col h4 {
-            color: var(--text-light);
+            color: var(--primary-color);
             font-family: 'Cinzel', serif;
             font-size: 1.2rem;
             margin-bottom: 20px;
@@ -468,13 +571,13 @@
         }
 
         .footer-col a {
-            color: rgba(255, 255, 255, 0.75);
+            color: var(--primary-color);
             text-decoration: none;
             transition: var(--transition);
         }
 
         .footer-col a:hover {
-            color: var(--bg-light);
+            color: var(--secondary-color);
         }
 
         .footer-col .social-link {
@@ -550,7 +653,7 @@
         }
 
         .footer-bottom {
-            border-top: 1px solid rgba(255,255,255,0.1);
+            border-top: 1px solid rgba(0,0,0,0.1);
             padding-top: 30px;
             text-align: center;
             margin-top: 30px;
@@ -563,6 +666,10 @@
             }
             .hero-content h1 {
                 font-size: 2.8rem;
+            }
+            .intro-features {
+                grid-template-columns: 1fr;
+                max-width: 420px;
             }
         }
 
@@ -639,6 +746,23 @@
             <span class="section-subtitle" data-translate="about_subtitle">The Retreat</span>
             <h2 class="section-title" data-translate="about_title">An Elegant Escape</h2>
             <p data-translate="about_desc">D'Green Niravakuta blends luxury with the serenity of nature. Handcrafted teak wood details, modern private amenities, and a quiet outdoor swimming pool await you. We host premium suites to preserve absolute privacy and focus entirely on your relaxation.</p>
+            <div class="intro-features">
+                <div class="intro-feature">
+                    <i class="fa-solid fa-tree"></i>
+                    <h3 data-translate="about_feat1_t">Handcrafted Teak</h3>
+                    <p data-translate="about_feat1_d">Custom woodwork details in every suite</p>
+                </div>
+                <div class="intro-feature">
+                    <i class="fa-solid fa-water"></i>
+                    <h3 data-translate="about_feat2_t">Outdoor Pool</h3>
+                    <p data-translate="about_feat2_d">Quiet private pool access on-site</p>
+                </div>
+                <div class="intro-feature">
+                    <i class="fa-solid fa-door-closed"></i>
+                    <h3 data-translate="about_feat3_t">Total Privacy</h3>
+                    <p data-translate="about_feat3_d">Premium suites for pure relaxation</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -727,21 +851,18 @@
                 </div>
 
             </div>
-        </div>
-    </section>
 
-    <!-- Booking CTA -->
-    <section class="cta-booking">
-        <div class="container">
-            <h2 data-translate="cta_title">Personalized Booking Experience</h2>
-            <p data-translate="cta_desc">To ensure a custom tailored stay, we accept reservations via WhatsApp, Email, or phone call. Contact our team directly to check room availability.</p>
-            <div class="hero-cta" style="margin-top: 20px;">
-                <a href="https://www.secure-booking-engine.com/accounts/isHeDWnpqFAeK2YnaKKpjA/properties/GPoRusxJar4L6XIncD0YQw/booking-engine/web/source/4wsctBw6Oq6j-g9XuxeRzQ/" class="btn btn-primary" target="_blank">
-                    <i class="fa-solid fa-calendar-days"></i> <span data-translate="hero_search">Search Rooms</span>
-                </a>
-                <a href="https://wa.me/6281128070123?text=Hello%20D'Green%20Niravakuta%2C%20I%20would%20like%20to%20inquire%20about%20booking%20a%20stay." class="btn btn-whatsapp" target="_blank">
-                    <i class="fa-brands fa-whatsapp"></i> <span data-translate="cta_btn">Contact us on WhatsApp</span>
-                </a>
+            <div class="cta-booking">
+                <h2 data-translate="cta_title">Reserve Your Sanctuary</h2>
+                <p data-translate="cta_desc">We accept reservations via WhatsApp, Email, or phone call. Contact our team directly to check availability and tailor your stay.</p>
+                <div class="hero-cta">
+                    <a href="https://www.secure-booking-engine.com/accounts/isHeDWnpqFAeK2YnaKKpjA/properties/GPoRusxJar4L6XIncD0YQw/booking-engine/web/source/4wsctBw6Oq6j-g9XuxeRzQ/" class="btn btn-primary" target="_blank">
+                        <i class="fa-solid fa-calendar-days"></i> <span data-translate="hero_search">Search Rooms</span>
+                    </a>
+                    <a href="https://wa.me/6281128070123?text=Hello%20D'Green%20Niravakuta%2C%20I%20would%20like%20to%20inquire%20about%20booking%20a%20stay." class="btn btn-whatsapp" target="_blank">
+                        <i class="fa-brands fa-whatsapp"></i> <span data-translate="cta_btn">Contact us on WhatsApp</span>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -764,10 +885,10 @@
                 <!-- Quick Contact Column -->
                 <div class="footer-col">
                     <h4 data-translate="footer_contact">Quick Contact</h4>
-                    <p><i class="fa-solid fa-envelope" style="color: var(--secondary-color);"></i> <a href="mailto:hello@dgreenniravakuta.com">hello@dgreenniravakuta.com</a></p>
-                    <p><i class="fa-solid fa-phone" style="color: var(--secondary-color);"></i> <a href="tel:081128070123">0811-2807-0123</a></p>
+                    <p><i class="fa-solid fa-envelope" style="color: var(--primary-dark);"></i> <a href="mailto:hello@dgreenniravakuta.com">hello@dgreenniravakuta.com</a></p>
+                    <p><i class="fa-solid fa-phone" style="color: var(--primary-dark);"></i> <a href="tel:081128070123">0811-2807-0123</a></p>
                     <p>
-                        <i class="fa-solid fa-location-dot" style="color: var(--secondary-color);"></i>
+                        <i class="fa-solid fa-location-dot" style="color: var(--primary-dark);"></i>
                         <span>Jl. Grand Dewi Sri No.88, Legian, Kec. Kuta, Kabupaten Badung, Bali 80361</span>
                     </p>
                 </div>
@@ -777,12 +898,12 @@
                     <h4 data-translate="footer_social">Find & Follow Us</h4>
                     <p>
                         <a href="https://www.instagram.com/dgreenniravakuta" target="_blank" class="social-link">
-                            <i class="fa-brands fa-instagram" style="font-size: 1.2rem; color: var(--secondary-color);"></i> Instagram
+                            <i class="fa-brands fa-instagram" style="font-size: 1.2rem; color: var(--primary-dark);"></i> Instagram
                         </a>
                     </p>
                     <p>
                         <a href="https://maps.app.goo.gl/7E1rv2BynYwMyYUQ7?g_st=ac" target="_blank" class="social-link">
-                            <i class="fa-solid fa-map-location-dot" style="font-size: 1.2rem; color: var(--secondary-color);"></i> Google Maps
+                            <i class="fa-solid fa-map-location-dot" style="font-size: 1.2rem; color: var(--primary-dark);"></i> Google Maps
                         </a>
                     </p>
                 </div>
@@ -811,6 +932,12 @@
                 about_subtitle: "The Retreat",
                 about_title: "An Elegant Escape",
                 about_desc: "D'Green Niravakuta blends luxury with the serenity of nature. Handcrafted teak wood details, modern private amenities, and a quiet outdoor swimming pool await you. We host premium suites to preserve absolute privacy and focus entirely on your relaxation.",
+                about_feat1_t: "Handcrafted Teak",
+                about_feat1_d: "Custom woodwork details in every suite",
+                about_feat2_t: "Outdoor Pool",
+                about_feat2_d: "Quiet private pool access on-site",
+                about_feat3_t: "Total Privacy",
+                about_feat3_d: "Premium suites for pure relaxation",
                 gallery_subtitle: "Visual Tour",
                 gallery_title: "Explore D'Green Niravakuta",
                 suites_subtitle: "Accommodations",
@@ -829,8 +956,8 @@
                 suite_desc: "Our grandest option. The Suite boasts a sprawling 55m² layout showcasing an extra-large premium double bed. Complete with elegant teak paneling, an integrated custom wardrobe, work desk, and fully fitted private kitchenette.",
                 spec_bed_xl: "Extra Large Double Bed",
                 btn_inquire_st: "Inquire Suite",
-                cta_title: "Personalized Booking Experience",
-                cta_desc: "To ensure a custom-tailored stay, we accept reservations via WhatsApp, Email, or phone call. Contact our team directly to check room availability.",
+                cta_title: "Reserve Your Sanctuary",
+                cta_desc: "We accept reservations via WhatsApp, Email, or phone call. Contact our team directly to check availability and tailor your stay.",
                 cta_btn: "Contact us on WhatsApp",
                 footer_contact: "Quick Contact",
                 footer_social: "Find & Follow Us"
@@ -848,6 +975,12 @@
                 about_subtitle: "Tempat Istirahat",
                 about_title: "Pelarian yang Elegan",
                 about_desc: "D'Green Niravakuta memadukan kemewahan dengan ketenangan alam. Detail kayu jati buatan tangan, fasilitas pribadi yang modern, dan kolam renang luar ruangan yang tenang menanti Anda. Kami menyediakan suite premium untuk menjaga privasi mutlak dan fokus sepenuhnya pada kenyamanan Anda.",
+                about_feat1_t: "Kayu Jati Buatan Tangan",
+                about_feat1_d: "Detail kayu kustom di setiap suite",
+                about_feat2_t: "Kolam Renang Luar Ruangan",
+                about_feat2_d: "Akses kolam pribadi yang tenang",
+                about_feat3_t: "Privasi Mutlak",
+                about_feat3_d: "Suite premium untuk relaksasi total",
                 gallery_subtitle: "Tur Visual",
                 gallery_title: "Jelajahi D'Green Niravakuta",
                 suites_subtitle: "Akomodasi",
@@ -866,8 +999,8 @@
                 suite_desc: "Pilihan termegah kami. Suite ini memiliki tata letak 55m² yang luas dengan tempat tidur double premium ekstra besar. Lengkap dengan panel kayu jati yang elegan, lemari pakaian kustom terintegrasi, meja kerja, dan dapur kecil pribadi yang lengkap.",
                 spec_bed_xl: "Tempat Tidur Double Ekstra Besar",
                 btn_inquire_st: "Tanyakan Suite",
-                cta_title: "Pengalaman Pemesanan Personalisasi",
-                cta_desc: "Untuk memastikan masa tinggal yang disesuaikan dengan kebutuhan Anda, kami menerima reservasi melalui WhatsApp, Email, atau telepon. Hubungi tim kami langsung untuk memeriksa ketersediaan kamar.",
+                cta_title: "Pesan Ruang Tenang Anda",
+                cta_desc: "Kami menerima reservasi melalui WhatsApp, Email, atau telepon. Hubungi tim kami langsung untuk memeriksa ketersediaan dan menyesuaikan masa tinggal Anda.",
                 cta_btn: "Hubungi kami via WhatsApp",
                 footer_contact: "Kontak Cepat",
                 footer_social: "Temukan & Ikuti Kami"
@@ -887,6 +1020,23 @@
                 }
             });
         }
+
+        function updateActiveNav() {
+            const sections = document.querySelectorAll('#about, #gallery, #suites, #contact');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            let current = '';
+            sections.forEach(section => {
+                if (window.scrollY >= section.offsetTop - 120) {
+                    current = section.getAttribute('id');
+                }
+            });
+            navLinks.forEach(link => {
+                link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+            });
+        }
+
+        window.addEventListener('scroll', updateActiveNav);
+        window.addEventListener('load', updateActiveNav);
     </script>
 </body>
 </html>
