@@ -212,7 +212,7 @@
                 linear-gradient(to bottom, var(--logo-bg), rgba(247, 241, 233, 0) 12%),
                 radial-gradient(ellipse 75% 65% at 50% 55%, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.28) 55%, rgba(0,0,0,0) 78%),
                 linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.35)),
-                url('../images/pool.jpg') no-repeat center center/cover;
+                url('../images/pool.webp') no-repeat center center/cover;
             display: flex;
             align-items: center;
             justify-content: center;
