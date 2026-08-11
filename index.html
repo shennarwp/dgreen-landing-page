@@ -136,11 +136,11 @@
         <div class="container">
             <nav>
                 <a href="#" class="logo-container">
-                    <img src="images/logo-square.webp" alt="D'Green Niravakuta Logo" class="header-logo">
+                    <img src="images/logo-square.webp" alt="D'Green Niravakuta Logo" data-translate-alt="alt_logo" class="header-logo">
                     <span class="logo-text">D'Green <span>Niravakuta</span></span>
                 </a>
                 <div class="nav-right">
-                    <ul class="nav-links">
+                    <ul class="nav-links" id="navLinks">
                         <li><a href="#about" data-translate="nav_about">About</a></li>
                         <li><a href="#gallery" data-translate="nav_gallery">Gallery</a></li>
                         <li><a href="#suites" data-translate="nav_suites">Our Suites</a></li>
@@ -152,6 +152,10 @@
                         <span class="lang-divider">|</span>
                         <button class="lang-btn" id="btn-id" onclick="switchLang('id')">ID</button>
                     </div>
+                    <!-- Mobile Nav Toggle -->
+                    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
                 </div>
             </nav>
         </div>
@@ -225,19 +229,19 @@
             </div>
             <div class="gallery-grid">
                 <div class="gallery-item gallery-item-large reveal">
-                    <img src="images/pool.webp" alt="Lush Pool Area" loading="lazy" decoding="async" data-lightbox="images/pool.webp" data-caption="Lush Pool Area">
+                    <img src="images/pool.webp" alt="Lush Pool Area" data-translate-alt="alt_pool" loading="lazy" decoding="async" data-lightbox="images/pool.webp" data-caption="Lush Pool Area">
                 </div>
                 <div class="gallery-item reveal reveal-d1">
-                    <img src="images/room-junior-suite.webp" alt="Junior Suite Bedroom Design" loading="lazy" decoding="async" data-lightbox="images/room-junior-suite.webp" data-caption="Junior Suite Bedroom Design">
+                    <img src="images/room-junior-suite.webp" alt="Junior Suite Bedroom Design" data-translate-alt="alt_junior" loading="lazy" decoding="async" data-lightbox="images/room-junior-suite.webp" data-caption="Junior Suite Bedroom Design">
                 </div>
                 <div class="gallery-item reveal reveal-d2">
-                    <img src="images/kitchen.webp" alt="Private Kitchenette" loading="lazy" decoding="async" data-lightbox="images/kitchen.webp" data-caption="Private Kitchenette">
+                    <img src="images/kitchen.webp" alt="Private Kitchenette" data-translate-alt="alt_kitchen" loading="lazy" decoding="async" data-lightbox="images/kitchen.webp" data-caption="Private Kitchenette">
                 </div>
                 <div class="gallery-item reveal reveal-d1">
-                    <img src="images/bathroom.webp" alt="Modern Bathroom" loading="lazy" decoding="async" data-lightbox="images/bathroom.webp" data-caption="Modern Bathroom">
+                    <img src="images/bathroom.webp" alt="Modern Bathroom" data-translate-alt="alt_bathroom" loading="lazy" decoding="async" data-lightbox="images/bathroom.webp" data-caption="Modern Bathroom">
                 </div>
                 <div class="gallery-item reveal reveal-d2">
-                    <img src="images/wardrobe.webp" alt="Teak Wardrobe and TV Console" loading="lazy" decoding="async" data-lightbox="images/wardrobe.webp" data-caption="Teak Wardrobe and TV Console">
+                    <img src="images/wardrobe.webp" alt="Teak Wardrobe and TV Console" data-translate-alt="alt_wardrobe" loading="lazy" decoding="async" data-lightbox="images/wardrobe.webp" data-caption="Teak Wardrobe and TV Console">
                 </div>
             </div>
         </div>
@@ -357,9 +361,13 @@
                     </div>
                 </div>
             </div>
+            <div class="reviews-more">
+                <a href="https://maps.app.goo.gl/7E1rv2BynYwMyYUQ7?g_st=ac" target="_blank" class="btn btn-google">
+                    <i class="fa-brands fa-google"></i> <span data-translate="reviews_more">Read all reviews on Google</span>
+                </a>
+            </div>
         </div>
     </section>
-
 
     <!-- FAQ Section -->
     <section id="faq" class="faq-section">
@@ -452,12 +460,12 @@
                 
                 <!-- Landscape Orientation Image: Square logo displayed on left -->
                 <div class="footer-logo-landscape-view">
-                    <img src="images/logo-square.webp" alt="D'Green Niravakuta Logo" loading="lazy" decoding="async">
+                    <img src="images/logo-square.webp" alt="D'Green Niravakuta Logo" data-translate-alt="alt_logo" loading="lazy" decoding="async">
                 </div>
 
                 <!-- Portrait Orientation Image: Landscape logo displayed above quick contact -->
                 <div class="footer-logo-portrait-view">
-                    <img src="images/logo-landscape.webp" alt="D'Green Niravakuta Logo" loading="lazy" decoding="async">
+                    <img src="images/logo-landscape.webp" alt="D'Green Niravakuta Logo" data-translate-alt="alt_logo" loading="lazy" decoding="async">
                 </div>
 
                 <!-- Quick Contact Column -->
@@ -507,6 +515,11 @@
         <button class="lightbox-btn lightbox-next" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
         <div class="lightbox-counter"></div>
     </div>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fa-solid fa-chevron-up"></i>
+    </button>
 
     <!-- Scripts -->
     <script src="js/main.js" defer></script>
