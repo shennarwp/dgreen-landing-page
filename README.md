@@ -36,8 +36,3 @@ Plain HTML/CSS/JS — no build step, no frameworks. A static site served by GitH
 ## Deployment
 
 Deployed automatically via **GitHub Pages** from the `master` branch. The `CNAME` file maps the custom domain.
-
-## Contributing / Workflow
-
-- Changes are made on feature branches and shipped as pull requests against `master`.
-- Keep HTML structure balanced and run a sanity check on `js/main.js` (syntax + translation key parity) after touching markup.
