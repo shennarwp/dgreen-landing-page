@@ -23,6 +23,7 @@ const translations = {
                 review_2_src: "3 months ago on Google",
                 review_3: "I've stayed here before and would stay here again. It's one of my go-to accommodation locations in Kuta, Bali. Good value for the money and the staff is good.",
                 review_3_src: "4 months ago on Google",
+                reviews_more: "Read all reviews on Google",
                 location_subtitle: "Find Us",
                 location_title: "In the Heart of Kuta",
                 location_name: "D'Green Niravakuta",
@@ -78,7 +79,13 @@ const translations = {
                 faq_q5: "Can I smoke in the rooms?",
                 faq_a5: "All rooms and indoor areas are non-smoking.",
                 faq_q6: "Do you offer long-stay discounts?",
-                faq_a6: "Long-stay discounts are possible based on availability — please ask our staff."
+                faq_a6: "Long-stay discounts are possible based on availability — please ask our staff.",
+                alt_logo: "D'Green Niravakuta Logo",
+                alt_pool: "Lush Pool Area",
+                alt_junior: "Junior Suite Bedroom Design",
+                alt_kitchen: "Private Kitchenette",
+                alt_bathroom: "Modern Bathroom",
+                alt_wardrobe: "Teak Wardrobe and TV Console"
             },
             id: {
                 page_title: "D'Green Niravakuta | Hotel Butik di Kuta, Bali",
@@ -104,6 +111,7 @@ const translations = {
                 review_2_src: "3 bulan lalu di Google",
                 review_3: "Saya pernah menginap di sini sebelumnya dan akan menginap lagi. Ini salah satu tempat penginapan pilihan saya di Kuta, Bali. Nilai uang yang bagus dan stafnya baik.",
                 review_3_src: "4 bulan lalu di Google",
+                reviews_more: "Baca semua ulasan di Google",
                 location_subtitle: "Lokasi Kami",
                 location_title: "Di Jantung Kuta",
                 location_name: "D'Green Niravakuta",
@@ -159,7 +167,13 @@ const translations = {
                 faq_q5: "Bolehkah merokok di dalam kamar?",
                 faq_a5: "Semua kamar dan area dalam ruangan adalah area bebas rokok (non-smoking).",
                 faq_q6: "Apakah ada diskon untuk menginap jangka panjang?",
-                faq_a6: "Diskon menginap jangka panjang tersedia tergantung ketersediaan — silakan tanyakan kepada staf kami."
+                faq_a6: "Diskon menginap jangka panjang tersedia tergantung ketersediaan — silakan tanyakan kepada staf kami.",
+                alt_logo: "Logo D'Green Niravakuta",
+                alt_pool: "Area Kolam Renang yang Asri",
+                alt_junior: "Desain Kamar Tidur Junior Suite",
+                alt_kitchen: "Dapur Kecil Pribadi",
+                alt_bathroom: "Kamar Mandi Modern",
+                alt_wardrobe: "Lemari Kayu Jati dan Rak TV"
             }
         };
 
@@ -181,6 +195,14 @@ const translations = {
                     el.textContent = translations[lang][key];
                 }
             });
+
+            // Update Image Alt Text
+            document.querySelectorAll('[data-translate-alt]').forEach(el => {
+                const key = el.getAttribute('data-translate-alt');
+                if (translations[lang][key]) {
+                    el.alt = translations[lang][key];
+                }
+            });
         }
 
         function updateActiveNav() {
@@ -199,6 +221,33 @@ const translations = {
 
         window.addEventListener('scroll', updateActiveNav);
         window.addEventListener('load', updateActiveNav);
+
+        /* Mobile Nav Toggle */
+        const mobileNav = document.getElementById('navLinks');
+        const navToggle = document.getElementById('navToggle');
+
+        function toggleNav(open) {
+            mobileNav.classList.toggle('open', open);
+            navToggle.setAttribute('aria-expanded', String(open));
+            const icon = navToggle.querySelector('i');
+            if (icon) icon.className = open ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
+        }
+
+        navToggle.addEventListener('click', () => {
+            toggleNav(!mobileNav.classList.contains('open'));
+        });
+        mobileNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => toggleNav(false));
+        });
+
+        /* Back to Top */
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            backToTop.classList.toggle('show', window.scrollY > 600);
+        }, { passive: true });
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
 
         /* Scroll-in Reveal */
         const revealObserver = new IntersectionObserver((entries) => {

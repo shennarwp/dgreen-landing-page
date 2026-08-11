@@ -522,13 +522,13 @@
             right: 30px;
             background-color: #25d366;
             color: white;
-            width: 60px;
-            height: 60px;
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 30px;
+            font-size: 24px;
             box-shadow: 2px 2px 15px rgba(0,0,0,0.2);
             z-index: 999;
             transition: var(--transition);
@@ -538,6 +538,56 @@
         .whatsapp-float:hover {
             transform: scale(1.1);
             background-color: #1ebe57;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 93px;
+            right: 30px;
+            background-color: var(--primary-dark);
+            color: var(--text-light);
+            width: 48px;
+            height: 48px;
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            cursor: pointer;
+            box-shadow: 2px 2px 12px rgba(0,0,0,0.25);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease, background-color 0.3s ease;
+            z-index: 998;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            background-color: var(--primary-color);
+        }
+
+        /* Mobile Nav Toggle */
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            font-size: 1.4rem;
+            cursor: pointer;
+            padding: 4px;
+            transition: var(--transition);
+        }
+
+        .nav-toggle:hover {
+            color: var(--primary-dark);
         }
 
         /* Footer */
@@ -674,8 +724,40 @@
         }
 
         @media (max-width: 768px) {
+            .nav-toggle {
+                display: block;
+            }
             .nav-links {
                 display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                gap: 0;
+                background-color: var(--logo-bg);
+                box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+                padding: 8px 0;
+            }
+            .nav-links.open {
+                display: flex;
+            }
+            .nav-links li {
+                width: 100%;
+            }
+            .nav-links a {
+                display: block;
+                padding: 13px 24px;
+            }
+            .nav-links a::after {
+                display: none;
+            }
+            .back-to-top {
+                bottom: 76px;
+                right: 20px;
+                width: 44px;
+                height: 44px;
+                font-size: 1rem;
             }
             .hero-content h1 {
                 font-size: 2.2rem;
@@ -683,9 +765,9 @@
             .whatsapp-float {
                 bottom: 20px;
                 right: 20px;
-                width: 50px;
-                height: 50px;
-                font-size: 24px;
+                width: 44px;
+                height: 44px;
+                font-size: 22px;
             }
         }
 
@@ -807,6 +889,30 @@
         .review-author span {
             color: #888;
             font-size: 0.78rem;
+        }
+
+        .reviews-more {
+            text-align: center;
+            margin-top: 35px;
+        }
+
+        .btn-google {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 12px 28px;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .btn-google:hover {
+            background-color: var(--primary-color);
+            color: var(--text-light);
         }
 
         /* Location Section */
