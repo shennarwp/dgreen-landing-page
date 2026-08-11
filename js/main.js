@@ -1,9 +1,10 @@
 const translations = {
             en: {
+                page_title: "D'Green Niravakuta | Boutique Stay in Kuta, Bali",
                 nav_about: "About",
                 nav_gallery: "Gallery",
                 nav_suites: "Our Suites",
-                nav_contact: "Contact",
+                nav_contact: "Find Us",
                 hero_title: "Calm stay in the heart of Kuta",
                 hero_subtitle: "Large comfortable suites for longer, better stays. Near everything you need.",
                 hero_cta: "Contact us on WhatsApp",
@@ -63,13 +64,28 @@ const translations = {
                 cta_btn: "Contact us on WhatsApp",
                 cta_note: 'Clicking "Search Rooms" will take you to our secure booking engine.',
                 footer_contact: "Quick Contact",
-                footer_social: "Find & Follow Us"
+                footer_social: "Find & Follow Us",
+                faq_subtitle: "Common Questions",
+                faq_title: "Good to Know",
+                faq_q1: "What are check-in and check-out times?",
+                faq_a1: "Check-in is from 14:00 and check-out is by 12:00.",
+                faq_q2: "What are the pool hours?",
+                faq_a2: "The outdoor pool is open daily from 08:00 to 20:00.",
+                faq_q3: "Do you offer laundry services?",
+                faq_a3: "Yes, laundry is available for an additional charge.",
+                faq_q4: "Is housekeeping provided daily?",
+                faq_a4: "Yes, daily housekeeping is included with every stay.",
+                faq_q5: "Can I smoke in the rooms?",
+                faq_a5: "All rooms and indoor areas are non-smoking.",
+                faq_q6: "Do you offer long-stay discounts?",
+                faq_a6: "Long-stay discounts are possible based on availability — please ask our staff."
             },
             id: {
+                page_title: "D'Green Niravakuta | Hotel Butik di Kuta, Bali",
                 nav_about: "Tentang",
                 nav_gallery: "Galeri",
                 nav_suites: "Kamar Kami",
-                nav_contact: "Kontak",
+                nav_contact: "Lokasi Kami",
                 hero_title: "Menginap tenang di jantung kota Kuta",
                 hero_subtitle: "Suite besar dan nyaman untuk masa tinggal yang lebih lama & lebih baik. Dekat dengan semua kebutuhan Anda.",
                 hero_cta: "Hubungi kami via WhatsApp",
@@ -129,7 +145,21 @@ const translations = {
                 cta_btn: "Hubungi kami via WhatsApp",
                 cta_note: 'Dengan mengklik "Cari Kamar", Anda akan diarahkan ke mesin pemesanan aman kami.',
                 footer_contact: "Kontak Cepat",
-                footer_social: "Temukan & Ikuti Kami"
+                footer_social: "Temukan & Ikuti Kami",
+                faq_subtitle: "Pertanyaan Umum",
+                faq_title: "Yang Perlu Diketahui",
+                faq_q1: "Jam berapa check-in dan check-out?",
+                faq_a1: "Check-in mulai pukul 14:00 dan check-out paling lambat pukul 12:00.",
+                faq_q2: "Jam berapa kolam renang buka?",
+                faq_a2: "Kolam renang luar ruangan buka setiap hari mulai pukul 08:00 hingga 20:00.",
+                faq_q3: "Apakah tersedia layanan laundry?",
+                faq_a3: "Ya, laundry tersedia dengan biaya tambahan.",
+                faq_q4: "Apakah housekeeping disediakan setiap hari?",
+                faq_a4: "Ya, housekeeping harian sudah termasuk di setiap masa tinggal.",
+                faq_q5: "Bolehkah merokok di dalam kamar?",
+                faq_a5: "Semua kamar dan area dalam ruangan adalah area bebas rokok (non-smoking).",
+                faq_q6: "Apakah ada diskon untuk menginap jangka panjang?",
+                faq_a6: "Diskon menginap jangka panjang tersedia tergantung ketersediaan — silakan tanyakan kepada staf kami."
             }
         };
 
@@ -137,6 +167,12 @@ const translations = {
             // Update Active Class on Buttons
             document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
             document.getElementById(`btn-${lang}`).classList.add('active');
+
+            // Update Document Language & Title
+            document.documentElement.lang = lang;
+            if (translations[lang].page_title) {
+                document.title = translations[lang].page_title;
+            }
 
             // Update Text on Elements
             document.querySelectorAll('[data-translate]').forEach(el => {
@@ -148,7 +184,7 @@ const translations = {
         }
 
         function updateActiveNav() {
-            const sections = document.querySelectorAll('#about, #gallery, #suites, #contact');
+            const sections = document.querySelectorAll('#about, #gallery, #suites, #location');
             const navLinks = document.querySelectorAll('.nav-links a');
             let current = '';
             sections.forEach(section => {
