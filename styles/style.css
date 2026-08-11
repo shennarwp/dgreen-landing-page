@@ -965,7 +965,7 @@
         }
 
         .map-embed {
-            border: 3px solid var(--primary-dark);
+            border: 1px solid rgba(60, 72, 54, 0.12);
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
