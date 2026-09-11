@@ -575,11 +575,23 @@
             font-size: 1.05rem;
         }
 
-        /* Floating WhatsApp Button */
-        .whatsapp-float {
+        /* Floating Action Group: WhatsApp + booking CTA in a row, back-to-top floats above it */
+        .sticky-actions {
             position: fixed;
             bottom: 30px;
             right: 30px;
+            z-index: 990;
+        }
+
+        .sticky-actions-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Floating WhatsApp Button */
+        .whatsapp-float {
+            position: static;
             background-color: #25d366;
             color: white;
             width: 48px;
@@ -590,9 +602,9 @@
             justify-content: center;
             font-size: 24px;
             box-shadow: 2px 2px 15px rgba(0,0,0,0.2);
-            z-index: 999;
             transition: var(--transition);
             text-decoration: none;
+            flex-shrink: 0;
         }
 
         .whatsapp-float:hover {
@@ -600,12 +612,8 @@
             background-color: #1ebe57;
         }
 
-        /* Mobile Sticky Booking Bar */
+        /* Mobile Sticky Booking Bar (shown only on mobile, inside the action group row) */
         .sticky-book {
-            position: fixed;
-            left: 50%;
-            bottom: 12px;
-            transform: translateX(-50%);
             display: none;
             align-items: center;
             justify-content: center;
@@ -618,7 +626,6 @@
             padding: 13px 30px;
             border-radius: 40px;
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.28);
-            z-index: 990;
             transition: var(--transition);
             max-width: calc(100vw - 32px);
             white-space: nowrap;
@@ -626,14 +633,14 @@
 
         .sticky-book:hover {
             background-color: var(--primary-color);
-            transform: translateX(-50%) translateY(-2px);
+            transform: translateY(-2px);
         }
 
-        /* Back to Top Button */
+        /* Back to Top Button (floats directly above the action group) */
         .back-to-top {
-            position: fixed;
-            bottom: 93px;
-            right: 30px;
+            position: absolute;
+            bottom: calc(100% + 12px);
+            right: 0;
             background-color: var(--primary-dark);
             color: var(--text-light);
             width: 48px;
@@ -650,7 +657,6 @@
             visibility: hidden;
             transform: translateY(10px);
             transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease, background-color 0.3s ease;
-            z-index: 998;
         }
 
         .back-to-top.show {
@@ -821,8 +827,17 @@
             .nav-toggle {
                 display: block;
             }
+            .sticky-actions {
+                left: 50%;
+                right: auto;
+                bottom: 12px;
+                transform: translateX(-50%);
+                max-width: calc(100vw - 24px);
+            }
             .sticky-book {
                 display: flex;
+                padding: 12px 22px;
+                font-size: 0.9rem;
             }
             footer {
                 padding-bottom: 100px; /* Reserve room for the sticky booking bar without exposing the body background */
@@ -852,22 +867,8 @@
             .nav-links a::after {
                 display: none;
             }
-            .back-to-top {
-                bottom: 138px;
-                right: 20px;
-                width: 44px;
-                height: 44px;
-                font-size: 1rem;
-            }
             .hero-content h1 {
                 font-size: 2.2rem;
-            }
-            .whatsapp-float {
-                bottom: 82px;
-                right: 20px;
-                width: 44px;
-                height: 44px;
-                font-size: 22px;
             }
         }
 
