@@ -1,6 +1,17 @@
 /* Language switching is handled via real URLs (/ and /id/) — see the
    hreflang links in the HTML. This file only contains page behaviour. */
 
+        /* Centralized contact info: the WhatsApp number lives here only.
+           Every <a data-wa-msg="..."> on the page gets its href built below. */
+        const WA_NUMBER = '6281128070123';
+
+        function initWhatsAppLinks() {
+            document.querySelectorAll('a[data-wa-msg]').forEach((link) => {
+                link.href = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(link.dataset.waMsg);
+            });
+        }
+        initWhatsAppLinks();
+
         function updateActiveNav() {
             const sections = document.querySelectorAll('#about, #gallery, #suites, #location');
             const navLinks = document.querySelectorAll('.nav-links a');
@@ -152,3 +163,20 @@
             if (e.key === 'ArrowLeft') openLightbox(lbIndex - 1);
             if (e.key === 'ArrowRight') openLightbox(lbIndex + 1);
         });
+
+        /* Vertical scrolling is locked while the lightbox is open, so a
+           horizontal drag here is interpreted as swipe prev/next. */
+        let swipeStartX = 0;
+        let swipeStartY = 0;
+        lightbox.addEventListener('pointerdown', (e) => {
+            swipeStartX = e.clientX;
+            swipeStartY = e.clientY;
+        }, { passive: true });
+        lightbox.addEventListener('pointerup', (e) => {
+            if (!lightbox.classList.contains('open')) return;
+            const dx = e.clientX - swipeStartX;
+            const dy = e.clientY - swipeStartY;
+            if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+                openLightbox(lbIndex + (dx < 0 ? 1 : -1));
+            }
+        }, { passive: true });
