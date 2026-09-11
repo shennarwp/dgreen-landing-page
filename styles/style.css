@@ -828,10 +828,8 @@
                 display: block;
             }
             .sticky-actions {
-                left: 50%;
-                right: auto;
+                right: 16px;
                 bottom: 12px;
-                transform: translateX(-50%);
                 max-width: calc(100vw - 24px);
             }
             .sticky-book {
