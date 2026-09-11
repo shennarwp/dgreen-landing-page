@@ -1,94 +1,8 @@
 const translations = {
-            en: {
-                page_title: "D'Green Niravakuta | Boutique Stay in Kuta, Bali",
-                nav_about: "About",
-                nav_gallery: "Gallery",
-                nav_suites: "Our Suites",
-                nav_contact: "Find Us",
-                hero_title: "Calm stay in the heart of Kuta",
-                hero_subtitle: "Large comfortable suites for longer, better stays. Near everything you need.",
-                hero_cta: "Contact us on WhatsApp",
-                hero_search: "Search Rooms",
-                hero_explore: "Explore Suites",
-                amen_wifi: "Free Wi-Fi",
-                amen_ac: "Air Conditioning",
-                amen_kitchen: "Kitchen & Fridge",
-                amen_parking: "Parking",
-                amen_pool: "Outdoor Pool",
-                reviews_subtitle: "Guest Stories",
-                reviews_title: "Loved by Our Guests",
-                review_1: "The room is very big, they have kitchenette, swimming pool is good too, staff is okay. I really recommend it for all of you guys.",
-                review_1_src: "2 months ago on Google",
-                review_2: "It's in a very convenient location, with many convenience stores, spas, and restaurants nearby.",
-                review_2_src: "3 months ago on Google",
-                review_3: "I've stayed here before and would stay here again. It's one of my go-to accommodation locations in Kuta, Bali. Good value for the money and the staff is good.",
-                review_3_src: "4 months ago on Google",
-                reviews_more: "Read all reviews on Google",
-                location_subtitle: "Find Us",
-                location_title: "In the Heart of Kuta",
-                location_name: "D'Green Niravakuta",
-                location_addr: "Jl. Grand Dewi Sri No.88, Legian, Kec. Kuta, Kabupaten Badung, Bali 80361",
-                location_desc: "Set in a quiet corner of Legian, our boutique stay keeps you close to the best of Kuta while feeling far from the crowd.",
-                loc_beach: "Only 1.8km to Legian Beach and Kuta Beach",
-                loc_airport: "30 minutes from Ngurah Rai Airport",
-                loc_shopping: "Shops, cafés, restaurants & nightlife nearby",
-                loc_parking: "Free on-site parking",
-                about_subtitle: "The Retreat",
-                about_title: "An Elegant Escape",
-                about_desc: "D'Green Niravakuta blends luxury with the serenity of nature. Handcrafted teak wood details, modern private amenities, and a quiet outdoor swimming pool await you. We host premium suites to preserve absolute privacy and focus entirely on your relaxation.",
-                about_feat1_t: "Handcrafted Teak",
-                about_feat1_d: "Custom woodwork details in every suite",
-                about_feat2_t: "Outdoor Pool",
-                about_feat2_d: "Quiet private pool access on-site",
-                about_feat3_t: "Total Privacy",
-                about_feat3_d: "Premium suites for pure relaxation",
-                gallery_subtitle: "Visual Tour",
-                gallery_title: "Explore D'Green Niravakuta",
-                suites_subtitle: "Accommodations",
-                suites_title: "Choose Your Sanctuary",
-                room_view_suite: "Premium Pool View",
-                junior_title: "Junior Suite",
-                junior_desc: "Our spacious Junior Suite offers a perfect layout featuring handcrafted teak wood accents, a premium double bed setup, and a private kitchenette. Seamless comfort and peace packaged in a 45m² layout.",
-                spec_bed_l: "Large Double Bed",
-                spec_kitchen: "Kitchenette & Fridge",
-                spec_ac: "Air Conditioning",
-                spec_shower: "Ensuite Bathroom",
-                spec_tv: "Flat Screen TV",
-                spec_pool: "Pool Access",
-                btn_inquire_jr: "Inquire Junior Suite",
-                suite_title: "Suite",
-                suite_desc: "Our grandest option. The Suite boasts a sprawling 55m² layout showcasing an extra-large premium double bed. Complete with elegant teak paneling, an integrated custom wardrobe, work desk, and fully fitted private kitchenette.",
-                spec_bed_xl: "Extra Large Double Bed",
-                btn_inquire_st: "Inquire Suite",
-                cta_title: "Reserve Your Sanctuary",
-                cta_desc: "We accept reservations via WhatsApp, Email, phone call, or our booking partner. Contact our team directly to check availability and tailor your stay.",
-                cta_btn: "Contact us on WhatsApp",
-                cta_note: 'Clicking "Search Rooms" will take you to our secure booking engine.',
-                footer_contact: "Quick Contact",
-                footer_social: "Find & Follow Us",
-                faq_subtitle: "Common Questions",
-                faq_title: "Good to Know",
-                faq_q1: "What are check-in and check-out times?",
-                faq_a1: "Check-in is from 14:00 and check-out is by 12:00.",
-                faq_q2: "What are the pool hours?",
-                faq_a2: "The outdoor pool is open daily from 08:00 to 20:00.",
-                faq_q3: "Do you offer laundry services?",
-                faq_a3: "Yes, laundry is available for an additional charge.",
-                faq_q4: "Is housekeeping provided daily?",
-                faq_a4: "Yes, daily housekeeping is included with every stay.",
-                faq_q5: "Can I smoke in the rooms?",
-                faq_a5: "All rooms and indoor areas are non-smoking.",
-                faq_q6: "Do you offer long-stay discounts?",
-                faq_a6: "Long-stay discounts are possible based on availability — please ask our staff.",
-                alt_logo: "D'Green Niravakuta Logo",
-                alt_pool: "Lush Pool Area",
-                alt_junior: "Junior Suite Bedroom Design",
-                alt_kitchen: "Private Kitchenette",
-                alt_bathroom: "Modern Bathroom",
-                alt_wardrobe: "Teak Wardrobe and TV Console"
-            },
             id: {
                 page_title: "D'Green Niravakuta | Hotel Butik di Kuta, Bali",
+                page_description: "Menginap butik yang tenang di jantung Kuta, Bali. Suite besar dan nyaman dengan kayu jati buatan tangan, kolam renang outdoor yang tenang, dan privasi total. Check-in mulai 14:00, check-out paling lambat 12:00.",
+                skip_link: "Lewati ke konten",
                 nav_about: "Tentang",
                 nav_gallery: "Galeri",
                 nav_suites: "Kamar Kami",
@@ -177,32 +91,62 @@ const translations = {
             }
         };
 
+        /* English lives in the HTML as the source of truth; cache it on load so
+           switching back to 'en' restores the exact original copy. */
+        const defaultText = new Map();
+        const defaultAlt = new Map();
+        document.querySelectorAll('[data-translate]').forEach(el => defaultText.set(el, el.textContent));
+        document.querySelectorAll('[data-translate-alt]').forEach(el => defaultAlt.set(el, el.alt));
+
+        const metaDescription = document.querySelector('meta[name="description"]');
+        const ogTitle = document.querySelector('meta[property="og:title"]');
+        const ogDescription = document.querySelector('meta[property="og:description"]');
+        const defaultTitle = document.title;
+        const defaultDescription = metaDescription ? metaDescription.content : '';
+        const defaultOgTitle = ogTitle ? ogTitle.content : '';
+        const defaultOgDescription = ogDescription ? ogDescription.content : '';
+
         function switchLang(lang) {
-            // Update Active Class on Buttons
-            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-            document.getElementById(`btn-${lang}`).classList.add('active');
+            const isId = lang === 'id';
+            const t = isId ? translations.id : null;
 
-            // Update Document Language & Title
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                const active = btn.id === 'btn-' + lang;
+                btn.classList.toggle('active', active);
+                btn.setAttribute('aria-pressed', String(active));
+            });
+
             document.documentElement.lang = lang;
-            if (translations[lang].page_title) {
-                document.title = translations[lang].page_title;
-            }
 
-            // Update Text on Elements
+            document.title = isId ? translations.id.page_title : defaultTitle;
+            if (metaDescription) metaDescription.content = isId ? translations.id.page_description : defaultDescription;
+            if (ogTitle) ogTitle.content = isId ? translations.id.page_title : defaultOgTitle;
+            if (ogDescription) ogDescription.content = isId ? translations.id.page_description : defaultOgDescription;
+
             document.querySelectorAll('[data-translate]').forEach(el => {
                 const key = el.getAttribute('data-translate');
-                if (translations[lang][key]) {
-                    el.textContent = translations[lang][key];
-                }
+                const fallback = defaultText.get(el) || '';
+                el.textContent = isId && t[key] ? t[key] : fallback;
             });
 
-            // Update Image Alt Text
             document.querySelectorAll('[data-translate-alt]').forEach(el => {
                 const key = el.getAttribute('data-translate-alt');
-                if (translations[lang][key]) {
-                    el.alt = translations[lang][key];
-                }
+                const fallback = defaultAlt.get(el) || '';
+                el.alt = isId && t[key] ? t[key] : fallback;
             });
+
+            try {
+                localStorage.setItem('dgreen-lang', lang);
+            } catch (e) { /* storage unavailable; ignore */ }
+        }
+
+        /* Restore saved language preference on load */
+        let savedLang = 'en';
+        try {
+            savedLang = localStorage.getItem('dgreen-lang') || 'en';
+        } catch (e) { /* storage unavailable; ignore */ }
+        if (savedLang === 'en' || savedLang === 'id') {
+            switchLang(savedLang);
         }
 
         function updateActiveNav() {
@@ -260,7 +204,7 @@ const translations = {
         }, { threshold: 0.12 });
         document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-        /* Lightbox */
+        /* Lightbox (with keyboard + focus management) */
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = lightbox.querySelector('.lightbox-img');
         const lightboxCounter = lightbox.querySelector('.lightbox-counter');
@@ -270,29 +214,55 @@ const translations = {
             lbSources.push({ src: el.getAttribute('data-lightbox-bg'), caption: el.getAttribute('data-caption') || '' });
         });
         let lbIndex = 0;
+        let lastFocusedEl = null;
+
+        function lightboxFocusables() {
+            return Array.from(lightbox.querySelectorAll('.lightbox-close, .lightbox-prev, .lightbox-next'));
+        }
 
         function openLightbox(index) {
-            lbIndex = (index + lbSources.length) % lbSources.length;
-            lightboxImg.src = lbSources[lbIndex].src;
-            lightboxImg.alt = lbSources[lbIndex].caption;
-            lightboxCounter.textContent = `${lbIndex + 1} / ${lbSources.length}`;
+            lastFocusedEl = document.activeElement;
+            const i = (lbSources.length + (index % lbSources.length)) % lbSources.length;
+            lbIndex = i;
+            lightboxImg.src = lbSources[i].src;
+            lightboxImg.alt = lbSources[i].caption;
+            lightboxCounter.textContent = `${i + 1} / ${lbSources.length}`;
             lightbox.classList.add('open');
             lightbox.setAttribute('aria-hidden', 'false');
             document.body.style.overflow = 'hidden';
+            lightbox.querySelector('.lightbox-close').focus();
         }
 
         function closeLightbox() {
             lightbox.classList.remove('open');
             lightbox.setAttribute('aria-hidden', 'true');
             document.body.style.overflow = '';
+            if (lastFocusedEl && typeof lastFocusedEl.focus === 'function') {
+                lastFocusedEl.focus();
+            }
+        }
+
+        function makeKeyboardOpenable(el) {
+            el.setAttribute('tabindex', '0');
+            el.setAttribute('role', 'button');
+            el.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    el.click();
+                }
+            });
         }
 
         document.querySelectorAll('img[data-lightbox]').forEach((img, i) => {
+            makeKeyboardOpenable(img);
             img.addEventListener('click', () => openLightbox(i));
         });
         document.querySelectorAll('[data-lightbox-bg]').forEach(el => {
+            makeKeyboardOpenable(el);
+            const src = el.getAttribute('data-lightbox-bg');
+            const caption = el.getAttribute('data-caption');
+            if (caption) el.setAttribute('aria-label', caption);
             el.addEventListener('click', () => {
-                const src = el.getAttribute('data-lightbox-bg');
                 const idx = lbSources.findIndex(s => s.src === src);
                 openLightbox(idx);
             });
@@ -304,6 +274,26 @@ const translations = {
         lightbox.addEventListener('click', (e) => {
             if (e.target === lightbox) closeLightbox();
         });
+
+        /* Trap focus inside the open lightbox */
+        lightbox.addEventListener('keydown', (e) => {
+            if (e.key !== 'Tab') return;
+            const focusables = lightboxFocusables();
+            if (focusables.length === 0) return;
+            const first = focusables[0];
+            const last = focusables[focusables.length - 1];
+            const active = document.activeElement;
+            if (e.shiftKey) {
+                if (active === first || !lightbox.contains(active)) {
+                    e.preventDefault();
+                    last.focus();
+                }
+            } else if (active === last || !lightbox.contains(active)) {
+                e.preventDefault();
+                first.focus();
+            }
+        });
+
         document.addEventListener('keydown', (e) => {
             if (!lightbox.classList.contains('open')) return;
             if (e.key === 'Escape') closeLightbox();

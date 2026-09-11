@@ -1,0 +1,44 @@
+/* Font Awesome 6 - subset to icons used on this site (auto-generated) */
+.fa-solid,.fa-brands{-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;display:inline-block;font-style:normal;font-variant:normal;line-height:1;text-rendering:auto}
+.fa-solid{font-family:"Font Awesome 6 Free";font-weight:900}
+.fa-brands{font-family:"Font Awesome 6 Brands";font-weight:400}
+@font-face{font-family:"Font Awesome 6 Free";font-style:normal;font-weight:900;font-display:swap;src:url(../webfonts/fa-solid-900-subset.woff2) format("woff2");unicode-range:U+e51a,U+f005,U+f00d,U+f023,U+f053,U+f054,U+f06e,U+f072,U+f073,U+f077,U+f078,U+f095,U+f0c9,U+f0e0,U+f1b9,U+f1bb,U+f1eb,U+f236,U+f26c,U+f2cc,U+f2dc,U+f31e,U+f3c5,U+f51a,U+f52a,U+f52b,U+f540,U+f54d,U+f54e,U+f553,U+f5a0,U+f5c5,U+f5ca,U+f773}
+@font-face{font-family:"Font Awesome 6 Brands";font-style:normal;font-weight:400;font-display:swap;src:url(../webfonts/fa-brands-400-subset.woff2) format("woff2");unicode-range:U+e07b,U+f16d,U+f1a0,U+f232}
+.fa-ban-smoking:before{content:"\f54d"}
+.fa-bars:before{content:"\f0c9"}
+.fa-bed:before{content:"\f236"}
+.fa-broom:before{content:"\f51a"}
+.fa-calendar-days:before{content:"\f073"}
+.fa-car:before{content:"\f1b9"}
+.fa-chevron-down:before{content:"\f078"}
+.fa-chevron-left:before{content:"\f053"}
+.fa-chevron-right:before{content:"\f054"}
+.fa-chevron-up:before{content:"\f077"}
+.fa-door-closed:before{content:"\f52a"}
+.fa-door-open:before{content:"\f52b"}
+.fa-envelope:before{content:"\f0e0"}
+.fa-eye:before{content:"\f06e"}
+.fa-kitchen-set:before{content:"\e51a"}
+.fa-location-dot:before{content:"\f3c5"}
+.fa-lock:before{content:"\f023"}
+.fa-map-location-dot:before{content:"\f5a0"}
+.fa-maximize:before{content:"\f31e"}
+.fa-phone:before{content:"\f095"}
+.fa-plane:before{content:"\f072"}
+.fa-shirt:before{content:"\f553"}
+.fa-shower:before{content:"\f2cc"}
+.fa-snowflake:before{content:"\f2dc"}
+.fa-square-parking:before{content:"\f540"}
+.fa-star:before{content:"\f005"}
+.fa-store:before{content:"\f54e"}
+.fa-swimming-pool:before{content:"\f5c5"}
+.fa-tree:before{content:"\f1bb"}
+.fa-tv:before{content:"\f26c"}
+.fa-umbrella-beach:before{content:"\f5ca"}
+.fa-water:before{content:"\f773"}
+.fa-wifi:before{content:"\f1eb"}
+.fa-xmark:before{content:"\f00d"}
+.fa-google:before{content:"\f1a0"}
+.fa-instagram:before{content:"\f16d"}
+.fa-tiktok:before{content:"\e07b"}
+.fa-whatsapp:before{content:"\f232"}
