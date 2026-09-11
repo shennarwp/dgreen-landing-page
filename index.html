@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://stats.rwpiri.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://maps.gstatic.com https://*.googleapis.com https://*.google.com; font-src 'self'; connect-src 'self' https://stats.rwpiri.com; frame-src https://www.google.com https://maps.google.com; object-src 'none'; base-uri 'self'; form-action 'self'">
     <title>D'Green Niravakuta | Boutique Stay in Kuta, Bali</title>
     <meta name="description" content="Calm boutique stay in the heart of Kuta, Bali. Large comfortable suites with handcrafted teak wood, a quiet outdoor pool, and total privacy. Check-in from 14:00, check-out by 12:00.">
     <link rel="canonical" href="https://dgreenniravakuta.com/">
@@ -115,8 +116,9 @@
     <meta name="twitter:card" content="summary_large_image">
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
-    <!-- Preload hero background image (LCP) -->
-    <link rel="preload" as="image" href="images/pool.webp">
+    <!-- Preload hero background image (LCP) — sized per viewport -->
+    <link rel="preload" as="image" href="images/pool-768.webp" media="(max-width: 768px)">
+    <link rel="preload" as="image" href="images/pool.webp" media="(min-width: 769px)">
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="fontawesome/css/icons.min.css">
     <!-- Self-Hosted Fonts: Cinzel & Montserrat -->
@@ -131,7 +133,7 @@
     <a class="skip-link" href="#main">Skip to content</a>
 
     <!-- Floating WhatsApp -->
-    <a href="https://wa.me/6281128070123?text=Hello%20D'Green%20Niravakuta%2C%20I%20would%20like%20to%20inquire%20about%20booking%20a%20stay." class="whatsapp-float" target="_blank" aria-label="Book on WhatsApp">
+    <a href="#" class="whatsapp-float" data-wa-msg="Hello D'Green Niravakuta, I would like to inquire about booking a stay." target="_blank" rel="noopener noreferrer" aria-label="Book on WhatsApp">
         <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
     </a>
 
@@ -172,10 +174,10 @@
             <h1>Calm stay in the heart of Kuta</h1>
             <p>Large comfortable suites for longer, better stays. Near everything you need.</p>
             <div class="hero-cta">
-                <a href="https://www.secure-booking-engine.com/accounts/isHeDWnpqFAeK2YnaKKpjA/properties/GPoRusxJar4L6XIncD0YQw/booking-engine/web/source/4wsctBw6Oq6j-g9XuxeRzQ/" class="btn btn-primary" target="_blank">
+                <a href="https://www.secure-booking-engine.com/accounts/isHeDWnpqFAeK2YnaKKpjA/properties/GPoRusxJar4L6XIncD0YQw/booking-engine/web/source/4wsctBw6Oq6j-g9XuxeRzQ/" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
                     <i class="fa-solid fa-calendar-days" aria-hidden="true"></i> <span>Search Rooms</span>
                 </a>
-                <a href="https://wa.me/6281128070123?text=Hello%20D'Green%20Niravakuta%2C%20I%20would%20like%20to%20inquire%20about%20booking%20a%20suite." class="btn btn-whatsapp" target="_blank">
+                <a href="#" class="btn btn-whatsapp" data-wa-msg="Hello D'Green Niravakuta, I would like to inquire about booking a suite." target="_blank" rel="noopener noreferrer">
                     <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> <span>Contact us on WhatsApp</span>
                 </a>
                 <a href="#suites" class="btn btn-outline">Explore Suites</a>
@@ -234,19 +236,19 @@
             </div>
             <div class="gallery-grid">
                 <div class="gallery-item gallery-item-large reveal">
-                    <img src="images/pool.webp" alt="Lush Pool Area" width="1280" height="852" loading="lazy" decoding="async" data-lightbox="images/pool.webp" data-caption="Lush Pool Area">
+                    <img src="images/pool.webp" srcset="images/pool-480.webp 480w, images/pool-768.webp 768w, images/pool.webp 1280w" sizes="(max-width: 768px) 90vw, (max-width: 992px) 47vw, 33vw" alt="Lush Pool Area" width="1280" height="852" loading="lazy" decoding="async" data-lightbox="images/pool.webp" data-caption="Lush Pool Area">
                 </div>
                 <div class="gallery-item reveal reveal-d1">
-                    <img src="images/room-junior-suite.webp" alt="Junior Suite Bedroom Design" width="1280" height="853" loading="lazy" decoding="async" data-lightbox="images/room-junior-suite.webp" data-caption="Junior Suite Bedroom Design">
+                    <img src="images/room-junior-suite.webp" srcset="images/room-junior-suite-480.webp 480w, images/room-junior-suite-768.webp 768w, images/room-junior-suite.webp 1280w" sizes="(max-width: 768px) 90vw, (max-width: 992px) 47vw, 33vw" alt="Junior Suite Bedroom Design" width="1280" height="853" loading="lazy" decoding="async" data-lightbox="images/room-junior-suite.webp" data-caption="Junior Suite Bedroom Design">
                 </div>
                 <div class="gallery-item reveal reveal-d2">
-                    <img src="images/kitchen.webp" alt="Private Kitchenette" width="1280" height="853" loading="lazy" decoding="async" data-lightbox="images/kitchen.webp" data-caption="Private Kitchenette">
+                    <img src="images/kitchen.webp" srcset="images/kitchen-480.webp 480w, images/kitchen-768.webp 768w, images/kitchen.webp 1280w" sizes="(max-width: 768px) 90vw, (max-width: 992px) 47vw, 33vw" alt="Private Kitchenette" width="1280" height="853" loading="lazy" decoding="async" data-lightbox="images/kitchen.webp" data-caption="Private Kitchenette">
                 </div>
                 <div class="gallery-item reveal reveal-d1">
-                    <img src="images/bathroom.webp" alt="Modern Bathroom" width="1280" height="853" loading="lazy" decoding="async" data-lightbox="images/bathroom.webp" data-caption="Modern Bathroom">
+                    <img src="images/bathroom.webp" srcset="images/bathroom-480.webp 480w, images/bathroom-768.webp 768w, images/bathroom.webp 1280w" sizes="(max-width: 768px) 90vw, (max-width: 992px) 47vw, 33vw" alt="Modern Bathroom" width="1280" height="853" loading="lazy" decoding="async" data-lightbox="images/bathroom.webp" data-caption="Modern Bathroom">
                 </div>
                 <div class="gallery-item reveal reveal-d2">
-                    <img src="images/wardrobe.webp" alt="Teak Wardrobe and TV Console" width="1280" height="854" loading="lazy" decoding="async" data-lightbox="images/wardrobe.webp" data-caption="Teak Wardrobe and TV Console">
+                    <img src="images/wardrobe.webp" srcset="images/wardrobe-480.webp 480w, images/wardrobe-768.webp 768w, images/wardrobe.webp 1280w" sizes="(max-width: 768px) 90vw, (max-width: 992px) 47vw, 33vw" alt="Teak Wardrobe and TV Console" width="1280" height="854" loading="lazy" decoding="async" data-lightbox="images/wardrobe.webp" data-caption="Teak Wardrobe and TV Console">
                 </div>
             </div>
         </div>
@@ -279,7 +281,7 @@
                             <li><i class="fa-solid fa-tv" aria-hidden="true"></i> <span>Flat Screen TV</span></li>
                             <li><i class="fa-solid fa-swimming-pool" aria-hidden="true"></i> <span>Pool Access</span></li>
                         </ul>
-                        <a href="https://wa.me/6281128070123?text=Hello%20D'Green%20Niravakuta%2C%20I%20would%20like%20to%20inquire%20about%20booking%20the%20Junior%20Suite." class="btn btn-whatsapp" target="_blank">
+                        <a href="#" class="btn btn-whatsapp" data-wa-msg="Hello D'Green Niravakuta, I would like to inquire about booking the Junior Suite." target="_blank" rel="noopener noreferrer">
                             <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> <span>Inquire Junior Suite</span>
                         </a>
                     </div>
@@ -303,7 +305,7 @@
                             <li><i class="fa-solid fa-tv" aria-hidden="true"></i> <span>Flat Screen TV</span></li>
                             <li><i class="fa-solid fa-swimming-pool" aria-hidden="true"></i> <span>Pool Access</span></li>
                         </ul>
-                        <a href="https://wa.me/6281128070123?text=Hello%20D'Green%20Niravakuta%2C%20I%20would%20like%20to%20inquire%20about%20booking%20the%20Suite." class="btn btn-whatsapp" target="_blank">
+                        <a href="#" class="btn btn-whatsapp" data-wa-msg="Hello D'Green Niravakuta, I would like to inquire about booking the Suite." target="_blank" rel="noopener noreferrer">
                             <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> <span>Inquire Suite</span>
                         </a>
                     </div>
@@ -315,10 +317,10 @@
                 <h2>Reserve Your Sanctuary</h2>
                 <p>We accept reservations via WhatsApp, Email, phone call, or our booking partner. Contact our team directly to check availability and tailor your stay.</p>
                 <div class="hero-cta">
-                    <a href="https://www.secure-booking-engine.com/accounts/isHeDWnpqFAeK2YnaKKpjA/properties/GPoRusxJar4L6XIncD0YQw/booking-engine/web/source/4wsctBw6Oq6j-g9XuxeRzQ/" class="btn btn-primary" target="_blank">
+                    <a href="https://www.secure-booking-engine.com/accounts/isHeDWnpqFAeK2YnaKKpjA/properties/GPoRusxJar4L6XIncD0YQw/booking-engine/web/source/4wsctBw6Oq6j-g9XuxeRzQ/" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
                         <i class="fa-solid fa-calendar-days" aria-hidden="true"></i> <span>Search Rooms</span>
                     </a>
-                    <a href="https://wa.me/6281128070123?text=Hello%20D'Green%20Niravakuta%2C%20I%20would%20like%20to%20inquire%20about%20booking%20a%20stay." class="btn btn-whatsapp" target="_blank">
+                    <a href="#" class="btn btn-whatsapp" data-wa-msg="Hello D'Green Niravakuta, I would like to inquire about booking a stay." target="_blank" rel="noopener noreferrer">
                         <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> <span>Contact us on WhatsApp</span>
                     </a>
                 </div>
@@ -367,7 +369,7 @@
                 </div>
             </div>
             <div class="reviews-more">
-                <a href="https://maps.app.goo.gl/7E1rv2BynYwMyYUQ7?g_st=ac" target="_blank" class="btn btn-google">
+                <a href="https://maps.app.goo.gl/7E1rv2BynYwMyYUQ7?g_st=ac" target="_blank" rel="noopener noreferrer" class="btn btn-google">
                     <i class="fa-brands fa-google" aria-hidden="true"></i> <span>Read all reviews on Google</span>
                 </a>
             </div>
@@ -466,12 +468,12 @@
                 
                 <!-- Landscape Orientation Image: Square logo displayed on left -->
                 <div class="footer-logo-landscape-view">
-                    <img src="images/logo-square.webp" alt="D'Green Niravakuta Logo" width="1254" height="1254" loading="lazy" decoding="async">
+                    <img src="images/logo-square.webp" srcset="images/logo-square-480.webp 480w, images/logo-square-768.webp 768w, images/logo-square.webp 1254w" sizes="(min-width: 769px) 250px, 420px" alt="D'Green Niravakuta Logo" width="1254" height="1254" loading="lazy" decoding="async">
                 </div>
 
                 <!-- Portrait Orientation Image: Landscape logo displayed above quick contact -->
                 <div class="footer-logo-portrait-view">
-                    <img src="images/logo-landscape.webp" alt="D'Green Niravakuta Logo" width="1280" height="640" loading="lazy" decoding="async">
+                    <img src="images/logo-landscape.webp" srcset="images/logo-landscape-480.webp 480w, images/logo-landscape-768.webp 768w, images/logo-landscape.webp 1280w" sizes="(min-width: 769px) 250px, 420px" alt="D'Green Niravakuta Logo" width="1280" height="640" loading="lazy" decoding="async">
                 </div>
 
                 <!-- Quick Contact Column -->
@@ -489,17 +491,17 @@
                 <div class="footer-col">
                     <h4>Find & Follow Us</h4>
                     <p>
-                        <a href="https://www.instagram.com/dgreenniravakuta" target="_blank" class="social-link">
+                        <a href="https://www.instagram.com/dgreenniravakuta" target="_blank" rel="noopener noreferrer" class="social-link">
                             <i class="fa-brands fa-instagram" aria-hidden="true"></i> Instagram
                         </a>
                     </p>
                     <p>
-                        <a href="https://www.tiktok.com/@dgreen.niravakuta" target="_blank" class="social-link">
+                        <a href="https://www.tiktok.com/@dgreen.niravakuta" target="_blank" rel="noopener noreferrer" class="social-link">
                             <i class="fa-brands fa-tiktok" aria-hidden="true"></i> TikTok
                         </a>
                     </p>
                     <p>
-                        <a href="https://maps.app.goo.gl/7E1rv2BynYwMyYUQ7?g_st=ac" target="_blank" class="social-link">
+                        <a href="https://maps.app.goo.gl/7E1rv2BynYwMyYUQ7?g_st=ac" target="_blank" rel="noopener noreferrer" class="social-link">
                             <i class="fa-solid fa-map-location-dot" aria-hidden="true"></i> Google Maps
                         </a>
                     </p>
@@ -526,6 +528,12 @@
     <button class="back-to-top" id="backToTop" aria-label="Back to top">
         <i class="fa-solid fa-chevron-up" aria-hidden="true"></i>
     </button>
+
+    <!-- Mobile Sticky Booking Bar -->
+    <a href="https://www.secure-booking-engine.com/accounts/isHeDWnpqFAeK2YnaKKpjA/properties/GPoRusxJar4L6XIncD0YQw/booking-engine/web/source/4wsctBw6Oq6j-g9XuxeRzQ/" class="sticky-book" target="_blank" rel="noopener noreferrer">
+        <i class="fa-solid fa-calendar-days" aria-hidden="true"></i>
+        <span>Check Availability</span>
+    </a>
 
     <!-- Scripts -->
     <script src="js/main.js" defer></script>

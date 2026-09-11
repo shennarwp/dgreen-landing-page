@@ -270,6 +270,16 @@
             text-shadow: 0 1px 4px rgba(0,0,0,0.65), 0 4px 14px rgba(0,0,0,0.45);
         }
 
+        @media (max-width: 768px) {
+            .hero {
+                background:
+                    linear-gradient(to bottom, var(--logo-bg), rgba(247, 241, 233, 0) 12%),
+                    radial-gradient(ellipse 75% 65% at 50% 55%, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.28) 55%, rgba(0,0,0,0) 78%),
+                    linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.35)),
+                    url('../images/pool-768.webp') no-repeat center center/cover;
+            }
+        }
+
         .hero-cta {
             display: flex;
             justify-content: center;
@@ -451,6 +461,15 @@
             background-image: url('../images/room-suite.webp');
         }
 
+        @media (max-width: 992px) {
+            .room-card-img-junior {
+                background-image: url('../images/room-junior-suite-768.webp');
+            }
+            .room-card-img-suite {
+                background-image: url('../images/room-suite-768.webp');
+            }
+        }
+
         .room-card-img::after {
             content: "";
             position: absolute;
@@ -579,6 +598,35 @@
         .whatsapp-float:hover {
             transform: scale(1.1);
             background-color: #1ebe57;
+        }
+
+        /* Mobile Sticky Booking Bar */
+        .sticky-book {
+            position: fixed;
+            left: 50%;
+            bottom: 12px;
+            transform: translateX(-50%);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background-color: var(--primary-dark);
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 13px 30px;
+            border-radius: 40px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.28);
+            z-index: 990;
+            transition: var(--transition);
+            max-width: calc(100vw - 32px);
+            white-space: nowrap;
+        }
+
+        .sticky-book:hover {
+            background-color: var(--primary-color);
+            transform: translateX(-50%) translateY(-2px);
         }
 
         /* Back to Top Button */
@@ -773,6 +821,12 @@
             .nav-toggle {
                 display: block;
             }
+            body {
+                padding-bottom: 72px; /* Make room for the sticky booking bar */
+            }
+            .sticky-book {
+                display: flex;
+            }
             .nav-links {
                 display: none;
                 position: absolute;
@@ -799,7 +853,7 @@
                 display: none;
             }
             .back-to-top {
-                bottom: 76px;
+                bottom: 138px;
                 right: 20px;
                 width: 44px;
                 height: 44px;
@@ -809,7 +863,7 @@
                 font-size: 2.2rem;
             }
             .whatsapp-float {
-                bottom: 20px;
+                bottom: 82px;
                 right: 20px;
                 width: 44px;
                 height: 44px;
@@ -1114,6 +1168,7 @@
             transition: opacity 0.3s ease, visibility 0.3s ease;
             z-index: 2000;
             cursor: zoom-out;
+            touch-action: none; /* Let horizontal drags swipe, not page-nav */
         }
 
         .lightbox.open {
