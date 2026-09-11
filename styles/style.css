@@ -634,11 +634,13 @@
             transform: translateX(-50%) translateY(-2px);
         }
 
-        /* Back to Top Button (floats directly above the action group) */
+        /* Back to Top Button — fully independent fixed element.
+           Explicit pixel offsets; never depends on a parent container or its height,
+           so no browser-specific quirk can make it invisible. */
         .back-to-top {
-            position: absolute;
-            bottom: calc(100% + 12px);
-            right: 0;
+            position: fixed;
+            bottom: 90px;     /* 30 (bar) + 48 (WhatsApp) + 12 gap -> directly above WhatsApp */
+            right: 30px;
             background-color: var(--primary-dark);
             color: var(--text-light);
             width: 48px;
