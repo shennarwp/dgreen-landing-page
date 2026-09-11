@@ -831,6 +831,10 @@
                 right: 16px;
                 bottom: 12px;
             }
+            .back-to-top {
+                right: 16px;
+                bottom: 72px; /* 12px bottom offset + 48px WhatsApp button + 12px gap */
+            }
             .sticky-book {
                 display: flex;
                 padding: 12px 22px;
@@ -1285,4 +1289,3 @@
                 right: 10px;
             }
         }
-    
