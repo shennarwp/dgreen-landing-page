@@ -36,3 +36,4 @@ Plain HTML/CSS/JS — no build step, no frameworks. A static site served by GitH
 ## Deployment
 
 Deployed automatically via **GitHub Pages** from the `master` branch. The `CNAME` file maps the custom domain.
+
