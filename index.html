@@ -112,8 +112,10 @@
     <meta name="twitter:card" content="summary_large_image">
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <!-- Preload hero background image (LCP) -->
+    <link rel="preload" as="image" href="images/pool.webp">
     <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="fontawesome/css/icons.min.css">
     <!-- Self-Hosted Fonts: Cinzel & Montserrat -->
     <link rel="stylesheet" href="fonts/fonts.css">
 
@@ -123,10 +125,11 @@
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
+    <a class="skip-link" href="#main" data-translate="skip_link">Skip to content</a>
 
     <!-- Floating WhatsApp -->
     <a href="https://wa.me/6281128070123?text=Hello%20D'Green%20Niravakuta%2C%20I%20would%20like%20to%20inquire%20about%20booking%20a%20stay." class="whatsapp-float" target="_blank" aria-label="Book on WhatsApp">
-        <i class="fa-brands fa-whatsapp"></i>
+        <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
     </a>
 
     <!-- Header -->
@@ -146,20 +149,20 @@
                     </ul>
                     <!-- Language Switcher -->
                     <div class="lang-switch">
-                        <button class="lang-btn active" id="btn-en" onclick="switchLang('en')">EN</button>
+                        <button class="lang-btn active" id="btn-en" aria-pressed="true" onclick="switchLang('en')">EN</button>
                         <span class="lang-divider">|</span>
-                        <button class="lang-btn" id="btn-id" onclick="switchLang('id')">ID</button>
+                        <button class="lang-btn" id="btn-id" aria-pressed="false" onclick="switchLang('id')">ID</button>
                     </div>
                     <!-- Mobile Nav Toggle -->
                     <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
-                        <i class="fa-solid fa-bars"></i>
+                        <i class="fa-solid fa-bars" aria-hidden="true"></i>
                     </button>
                 </div>
             </nav>
         </div>
     </header>
 
-    <main>
+    <main id="main">
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content container">
@@ -167,16 +170,16 @@
             <p data-translate="hero_subtitle">Large comfortable suites for longer, better stays. Near everything you need.</p>
             <div class="hero-cta">
                 <a href="https://www.secure-booking-engine.com/accounts/isHeDWnpqFAeK2YnaKKpjA/properties/GPoRusxJar4L6XIncD0YQw/booking-engine/web/source/4wsctBw6Oq6j-g9XuxeRzQ/" class="btn btn-primary" target="_blank">
-                    <i class="fa-solid fa-calendar-days"></i> <span data-translate="hero_search">Search Rooms</span>
+                    <i class="fa-solid fa-calendar-days" aria-hidden="true"></i> <span data-translate="hero_search">Search Rooms</span>
                 </a>
                 <a href="https://wa.me/6281128070123?text=Hello%20D'Green%20Niravakuta%2C%20I%20would%20like%20to%20inquire%20about%20booking%20a%20suite." class="btn btn-whatsapp" target="_blank">
-                    <i class="fa-brands fa-whatsapp"></i> <span data-translate="hero_cta">Contact us on WhatsApp</span>
+                    <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> <span data-translate="hero_cta">Contact us on WhatsApp</span>
                 </a>
                 <a href="#suites" class="btn btn-outline" data-translate="hero_explore">Explore Suites</a>
             </div>
         </div>
         <a href="#about" class="scroll-indicator" aria-label="Scroll down">
-            <i class="fa-solid fa-chevron-down"></i>
+            <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
         </a>
     </section>
 
@@ -184,11 +187,11 @@
     <section class="amenities-strip" aria-label="Amenities">
         <div class="container">
             <ul class="amenities-list">
-                <li><i class="fa-solid fa-wifi"></i> <span data-translate="amen_wifi">Free Wi-Fi</span></li>
-                <li><i class="fa-solid fa-snowflake"></i> <span data-translate="amen_ac">Air Conditioning</span></li>
-                <li><i class="fa-solid fa-kitchen-set"></i> <span data-translate="amen_kitchen">Kitchen &amp; Fridge</span></li>
-                <li><i class="fa-solid fa-square-parking"></i> <span data-translate="amen_parking">Parking</span></li>
-                <li><i class="fa-solid fa-water"></i> <span data-translate="amen_pool">Outdoor Pool</span></li>
+                <li><i class="fa-solid fa-wifi" aria-hidden="true"></i> <span data-translate="amen_wifi">Free Wi-Fi</span></li>
+                <li><i class="fa-solid fa-snowflake" aria-hidden="true"></i> <span data-translate="amen_ac">Air Conditioning</span></li>
+                <li><i class="fa-solid fa-kitchen-set" aria-hidden="true"></i> <span data-translate="amen_kitchen">Kitchen &amp; Fridge</span></li>
+                <li><i class="fa-solid fa-square-parking" aria-hidden="true"></i> <span data-translate="amen_parking">Parking</span></li>
+                <li><i class="fa-solid fa-water" aria-hidden="true"></i> <span data-translate="amen_pool">Outdoor Pool</span></li>
             </ul>
         </div>
     </section>
@@ -201,17 +204,17 @@
             <p data-translate="about_desc">D'Green Niravakuta blends luxury with the serenity of nature. Handcrafted teak wood details, modern private amenities, and a quiet outdoor swimming pool await you. We host premium suites to preserve absolute privacy and focus entirely on your relaxation.</p>
             <div class="intro-features">
                 <div class="intro-feature reveal">
-                    <i class="fa-solid fa-tree"></i>
+                    <i class="fa-solid fa-tree" aria-hidden="true"></i>
                     <h3 data-translate="about_feat1_t">Handcrafted Teak</h3>
                     <p data-translate="about_feat1_d">Custom woodwork details in every suite</p>
                 </div>
                 <div class="intro-feature reveal reveal-d1">
-                    <i class="fa-solid fa-water"></i>
+                    <i class="fa-solid fa-water" aria-hidden="true"></i>
                     <h3 data-translate="about_feat2_t">Outdoor Pool</h3>
                     <p data-translate="about_feat2_d">Quiet private pool access on-site</p>
                 </div>
                 <div class="intro-feature reveal reveal-d2">
-                    <i class="fa-solid fa-door-closed"></i>
+                    <i class="fa-solid fa-door-closed" aria-hidden="true"></i>
                     <h3 data-translate="about_feat3_t">Total Privacy</h3>
                     <p data-translate="about_feat3_d">Premium suites for pure relaxation</p>
                 </div>
@@ -222,7 +225,7 @@
     <!-- Visual Gallery Tour -->
     <section id="gallery" class="gallery-section">
         <div class="container">
-            <div style="text-align: center;">
+            <div class="section-header">
                 <span class="section-subtitle" data-translate="gallery_subtitle">Visual Tour</span>
                 <h2 class="section-title" data-translate="gallery_title">Explore D'Green Niravakuta</h2>
             </div>
@@ -249,7 +252,7 @@
     <!-- Accommodations Section -->
     <section id="suites" class="rooms-section">
         <div class="container">
-            <div style="text-align: center;">
+            <div class="section-header">
                 <span class="section-subtitle" data-translate="suites_subtitle">Accommodations</span>
                 <h2 class="section-title" data-translate="suites_title">Choose Your Sanctuary</h2>
             </div>
@@ -261,20 +264,20 @@
                     <div class="room-card-img" style="background-image: url('images/room-junior-suite.webp');" data-lightbox-bg="images/room-junior-suite.webp" data-caption="Junior Suite"></div>
                     <div class="room-card-content">
                         <div class="room-meta">
-                            <span><i class="fa-solid fa-maximize"></i> 45 m&sup2;</span>
+                            <span><i class="fa-solid fa-maximize" aria-hidden="true"></i> 45 m&sup2;</span>
                         </div>
                         <h3 data-translate="junior_title">Junior Suite</h3>
                         <p data-translate="junior_desc">Our spacious Junior Suite offers a perfect layout featuring handcrafted teak wood accents, a premium double bed setup, and a private kitchenette. Seamless comfort and peace packaged in a 45m&sup2; layout.</p>
                         <ul class="room-specs">
-                            <li><i class="fa-solid fa-bed"></i> <span data-translate="spec_bed_l">Large Double Bed</span></li>
-                            <li><i class="fa-solid fa-kitchen-set"></i> <span data-translate="spec_kitchen">Kitchenette & Fridge</span></li>
-                            <li><i class="fa-solid fa-snowflake"></i> <span data-translate="spec_ac">Air Conditioning</span></li>
-                            <li><i class="fa-solid fa-shower"></i> <span data-translate="spec_shower">Ensuite Bathroom</span></li>
-                            <li><i class="fa-solid fa-tv"></i> <span data-translate="spec_tv">Flat Screen TV</span></li>
-                            <li><i class="fa-solid fa-swimming-pool"></i> <span data-translate="spec_pool">Pool Access</span></li>
+                            <li><i class="fa-solid fa-bed" aria-hidden="true"></i> <span data-translate="spec_bed_l">Large Double Bed</span></li>
+                            <li><i class="fa-solid fa-kitchen-set" aria-hidden="true"></i> <span data-translate="spec_kitchen">Kitchenette & Fridge</span></li>
+                            <li><i class="fa-solid fa-snowflake" aria-hidden="true"></i> <span data-translate="spec_ac">Air Conditioning</span></li>
+                            <li><i class="fa-solid fa-shower" aria-hidden="true"></i> <span data-translate="spec_shower">Ensuite Bathroom</span></li>
+                            <li><i class="fa-solid fa-tv" aria-hidden="true"></i> <span data-translate="spec_tv">Flat Screen TV</span></li>
+                            <li><i class="fa-solid fa-swimming-pool" aria-hidden="true"></i> <span data-translate="spec_pool">Pool Access</span></li>
                         </ul>
                         <a href="https://wa.me/6281128070123?text=Hello%20D'Green%20Niravakuta%2C%20I%20would%20like%20to%20inquire%20about%20booking%20the%20Junior%20Suite." class="btn btn-whatsapp" target="_blank">
-                            <i class="fa-brands fa-whatsapp"></i> <span data-translate="btn_inquire_jr">Inquire Junior Suite</span>
+                            <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> <span data-translate="btn_inquire_jr">Inquire Junior Suite</span>
                         </a>
                     </div>
                 </div>
@@ -284,21 +287,21 @@
                     <div class="room-card-img" style="background-image: url('images/room-suite.webp');" data-lightbox-bg="images/room-suite.webp" data-caption="Suite"></div>
                     <div class="room-card-content">
                         <div class="room-meta">
-                            <span><i class="fa-solid fa-maximize"></i> 55 m&sup2;</span>
-                            <span><i class="fa-solid fa-eye" data-translate="room_view_suite">Premium Pool View</i></span>
+                            <span><i class="fa-solid fa-maximize" aria-hidden="true"></i> 55 m&sup2;</span>
+                            <span><i class="fa-solid fa-eye" aria-hidden="true"></i> <span data-translate="room_view_suite">Premium Pool View</span></span>
                         </div>
                         <h3 data-translate="suite_title">Suite</h3>
                         <p data-translate="suite_desc">Our grandest option. The Suite boasts a sprawling 55m&sup2; layout showcasing an extra-large premium double bed. Complete with elegant teak paneling, an integrated custom wardrobe, work desk, and fully fitted private kitchenette.</p>
                         <ul class="room-specs">
-                            <li><i class="fa-solid fa-bed"></i> <span data-translate="spec_bed_xl">Extra Large Double Bed</span></li>
-                            <li><i class="fa-solid fa-kitchen-set"></i> <span data-translate="spec_kitchen">Kitchenette & Fridge</span></li>
-                            <li><i class="fa-solid fa-snowflake"></i> <span data-translate="spec_ac">Air Conditioning</span></li>
-                            <li><i class="fa-solid fa-shower"></i> <span data-translate="spec_shower">Ensuite Bathroom</span></li>
-                            <li><i class="fa-solid fa-tv"></i> <span data-translate="spec_tv">Flat Screen TV</span></li>
-                            <li><i class="fa-solid fa-swimming-pool"></i> <span data-translate="spec_pool">Pool Access</span></li>
+                            <li><i class="fa-solid fa-bed" aria-hidden="true"></i> <span data-translate="spec_bed_xl">Extra Large Double Bed</span></li>
+                            <li><i class="fa-solid fa-kitchen-set" aria-hidden="true"></i> <span data-translate="spec_kitchen">Kitchenette & Fridge</span></li>
+                            <li><i class="fa-solid fa-snowflake" aria-hidden="true"></i> <span data-translate="spec_ac">Air Conditioning</span></li>
+                            <li><i class="fa-solid fa-shower" aria-hidden="true"></i> <span data-translate="spec_shower">Ensuite Bathroom</span></li>
+                            <li><i class="fa-solid fa-tv" aria-hidden="true"></i> <span data-translate="spec_tv">Flat Screen TV</span></li>
+                            <li><i class="fa-solid fa-swimming-pool" aria-hidden="true"></i> <span data-translate="spec_pool">Pool Access</span></li>
                         </ul>
                         <a href="https://wa.me/6281128070123?text=Hello%20D'Green%20Niravakuta%2C%20I%20would%20like%20to%20inquire%20about%20booking%20the%20Suite." class="btn btn-whatsapp" target="_blank">
-                            <i class="fa-brands fa-whatsapp"></i> <span data-translate="btn_inquire_st">Inquire Suite</span>
+                            <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> <span data-translate="btn_inquire_st">Inquire Suite</span>
                         </a>
                     </div>
                 </div>
@@ -310,13 +313,13 @@
                 <p data-translate="cta_desc">We accept reservations via WhatsApp, Email, phone call, or our booking partner. Contact our team directly to check availability and tailor your stay.</p>
                 <div class="hero-cta">
                     <a href="https://www.secure-booking-engine.com/accounts/isHeDWnpqFAeK2YnaKKpjA/properties/GPoRusxJar4L6XIncD0YQw/booking-engine/web/source/4wsctBw6Oq6j-g9XuxeRzQ/" class="btn btn-primary" target="_blank">
-                        <i class="fa-solid fa-calendar-days"></i> <span data-translate="hero_search">Search Rooms</span>
+                        <i class="fa-solid fa-calendar-days" aria-hidden="true"></i> <span data-translate="hero_search">Search Rooms</span>
                     </a>
                     <a href="https://wa.me/6281128070123?text=Hello%20D'Green%20Niravakuta%2C%20I%20would%20like%20to%20inquire%20about%20booking%20a%20stay." class="btn btn-whatsapp" target="_blank">
-                        <i class="fa-brands fa-whatsapp"></i> <span data-translate="cta_btn">Contact us on WhatsApp</span>
+                        <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> <span data-translate="cta_btn">Contact us on WhatsApp</span>
                     </a>
                 </div>
-                <p class="cta-note"><i class="fa-solid fa-lock"></i> <span data-translate="cta_note">Clicking "Search Rooms" will take you to our secure booking engine.</span></p>
+                <p class="cta-note"><i class="fa-solid fa-lock" aria-hidden="true"></i> <span data-translate="cta_note">Clicking "Search Rooms" will take you to our secure booking engine.</span></p>
             </div>
         </div>
     </section>
@@ -324,14 +327,14 @@
     <!-- Reviews Section -->
     <section id="reviews" class="reviews-section">
         <div class="container">
-            <div style="text-align: center;">
+            <div class="section-header">
                 <span class="section-subtitle" data-translate="reviews_subtitle">Guest Stories</span>
                 <h2 class="section-title" data-translate="reviews_title">Loved by Our Guests</h2>
             </div>
             <div class="reviews-grid">
                 <div class="review-card reveal">
-                    <div class="review-stars">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    <div class="review-stars" role="img" aria-label="5 out of 5">
+                        <i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i>
                     </div>
                     <blockquote data-translate="review_1">"The room is very big, they have kitchenette, swimming pool is good too, staff is okay. I really recommend it for all of you guys."</blockquote>
                     <div class="review-author">
@@ -340,8 +343,8 @@
                     </div>
                 </div>
                 <div class="review-card reveal reveal-d1">
-                    <div class="review-stars">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    <div class="review-stars" role="img" aria-label="5 out of 5">
+                        <i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i>
                     </div>
                     <blockquote data-translate="review_2">"It's in a very convenient location, with many convenience stores, spas, and restaurants nearby."</blockquote>
                     <div class="review-author">
@@ -350,8 +353,8 @@
                     </div>
                 </div>
                 <div class="review-card reveal reveal-d2">
-                    <div class="review-stars">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    <div class="review-stars" role="img" aria-label="5 out of 5">
+                        <i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i>
                     </div>
                     <blockquote data-translate="review_3">"I've stayed here before and would stay here again. It's one of my go-to accommodation locations in Kuta, Bali. Good value for the money and the staff is good."</blockquote>
                     <div class="review-author">
@@ -362,7 +365,7 @@
             </div>
             <div class="reviews-more">
                 <a href="https://maps.app.goo.gl/7E1rv2BynYwMyYUQ7?g_st=ac" target="_blank" class="btn btn-google">
-                    <i class="fa-brands fa-google"></i> <span data-translate="reviews_more">Read all reviews on Google</span>
+                    <i class="fa-brands fa-google" aria-hidden="true"></i> <span data-translate="reviews_more">Read all reviews on Google</span>
                 </a>
             </div>
         </div>
@@ -371,50 +374,50 @@
     <!-- FAQ Section -->
     <section id="faq" class="faq-section">
         <div class="container">
-            <div style="text-align: center;">
+            <div class="section-header">
                 <span class="section-subtitle" data-translate="faq_subtitle">Common Questions</span>
                 <h2 class="section-title" data-translate="faq_title">Good to Know</h2>
             </div>
             <div class="faq-grid">
                 <details class="faq-item reveal">
                     <summary>
-                        <span class="faq-q"><i class="fa-solid fa-door-open"></i> <span data-translate="faq_q1">What are check-in and check-out times?</span></span>
-                        <i class="fa-solid fa-chevron-down faq-icon"></i>
+                        <span class="faq-q"><i class="fa-solid fa-door-open" aria-hidden="true"></i> <span data-translate="faq_q1">What are check-in and check-out times?</span></span>
+                        <i class="fa-solid fa-chevron-down faq-icon" aria-hidden="true"></i>
                     </summary>
                     <p data-translate="faq_a1">Check-in is from 14:00 and check-out is by 12:00.</p>
                 </details>
                 <details class="faq-item reveal reveal-d1">
                     <summary>
-                        <span class="faq-q"><i class="fa-solid fa-water"></i> <span data-translate="faq_q2">What are the pool hours?</span></span>
-                        <i class="fa-solid fa-chevron-down faq-icon"></i>
+                        <span class="faq-q"><i class="fa-solid fa-water" aria-hidden="true"></i> <span data-translate="faq_q2">What are the pool hours?</span></span>
+                        <i class="fa-solid fa-chevron-down faq-icon" aria-hidden="true"></i>
                     </summary>
                     <p data-translate="faq_a2">The outdoor pool is open daily from 08:00 to 20:00.</p>
                 </details>
                 <details class="faq-item reveal reveal-d2">
                     <summary>
-                        <span class="faq-q"><i class="fa-solid fa-shirt"></i> <span data-translate="faq_q3">Do you offer laundry services?</span></span>
-                        <i class="fa-solid fa-chevron-down faq-icon"></i>
+                        <span class="faq-q"><i class="fa-solid fa-shirt" aria-hidden="true"></i> <span data-translate="faq_q3">Do you offer laundry services?</span></span>
+                        <i class="fa-solid fa-chevron-down faq-icon" aria-hidden="true"></i>
                     </summary>
                     <p data-translate="faq_a3">Yes, laundry is available for an additional charge.</p>
                 </details>
                 <details class="faq-item reveal reveal-d1">
                     <summary>
-                        <span class="faq-q"><i class="fa-solid fa-broom"></i> <span data-translate="faq_q4">Is housekeeping provided daily?</span></span>
-                        <i class="fa-solid fa-chevron-down faq-icon"></i>
+                        <span class="faq-q"><i class="fa-solid fa-broom" aria-hidden="true"></i> <span data-translate="faq_q4">Is housekeeping provided daily?</span></span>
+                        <i class="fa-solid fa-chevron-down faq-icon" aria-hidden="true"></i>
                     </summary>
                     <p data-translate="faq_a4">Yes, daily housekeeping is included with every stay.</p>
                 </details>
                 <details class="faq-item reveal reveal-d2">
                     <summary>
-                        <span class="faq-q"><i class="fa-solid fa-ban-smoking"></i> <span data-translate="faq_q5">Can I smoke in the rooms?</span></span>
-                        <i class="fa-solid fa-chevron-down faq-icon"></i>
+                        <span class="faq-q"><i class="fa-solid fa-ban-smoking" aria-hidden="true"></i> <span data-translate="faq_q5">Can I smoke in the rooms?</span></span>
+                        <i class="fa-solid fa-chevron-down faq-icon" aria-hidden="true"></i>
                     </summary>
                     <p data-translate="faq_a5">All rooms and indoor areas are non-smoking.</p>
                 </details>
                 <details class="faq-item reveal reveal-d1">
                     <summary>
-                        <span class="faq-q"><i class="fa-solid fa-calendar-days"></i> <span data-translate="faq_q6">Do you offer long-stay discounts?</span></span>
-                        <i class="fa-solid fa-chevron-down faq-icon"></i>
+                        <span class="faq-q"><i class="fa-solid fa-calendar-days" aria-hidden="true"></i> <span data-translate="faq_q6">Do you offer long-stay discounts?</span></span>
+                        <i class="fa-solid fa-chevron-down faq-icon" aria-hidden="true"></i>
                     </summary>
                     <p data-translate="faq_a6">Long-stay discounts are possible based on availability — please ask our staff.</p>
                 </details>
@@ -425,7 +428,7 @@
     <!-- Location Section -->
     <section id="location" class="location-section">
         <div class="container">
-            <div style="text-align: center;">
+            <div class="section-header">
                 <span class="section-subtitle" data-translate="location_subtitle">Find Us</span>
                 <h2 class="section-title" data-translate="location_title">In the Heart of Kuta</h2>
             </div>
@@ -435,10 +438,10 @@
                     <p data-translate="location_addr">Jl. Grand Dewi Sri No.88, Legian, Kec. Kuta, Kabupaten Badung, Bali 80361</p>
                     <p data-translate="location_desc">Set in a quiet corner of Legian, our boutique stay keeps you close to the best of Kuta while feeling far from the crowd.</p>
                     <ul class="distance-list">
-                        <li><i class="fa-solid fa-umbrella-beach"></i> <span data-translate="loc_beach">Only 1.8km to Legian Beach and Kuta Beach</span></li>
-                        <li><i class="fa-solid fa-plane"></i> <span data-translate="loc_airport">30 minutes from Ngurah Rai Airport</span></li>
-                        <li><i class="fa-solid fa-store"></i> <span data-translate="loc_shopping">Shops, cafés, restaurants &amp; nightlife nearby</span></li>
-                        <li><i class="fa-solid fa-car"></i> <span data-translate="loc_parking">Free on-site parking</span></li>
+                        <li><i class="fa-solid fa-umbrella-beach" aria-hidden="true"></i> <span data-translate="loc_beach">Only 1.8km to Legian Beach and Kuta Beach</span></li>
+                        <li><i class="fa-solid fa-plane" aria-hidden="true"></i> <span data-translate="loc_airport">30 minutes from Ngurah Rai Airport</span></li>
+                        <li><i class="fa-solid fa-store" aria-hidden="true"></i> <span data-translate="loc_shopping">Shops, cafés, restaurants &amp; nightlife nearby</span></li>
+                        <li><i class="fa-solid fa-car" aria-hidden="true"></i> <span data-translate="loc_parking">Free on-site parking</span></li>
                     </ul>
                 </div>
                 <div class="map-embed reveal reveal-d1">
@@ -471,10 +474,10 @@
                 <!-- Quick Contact Column -->
                 <div class="footer-col">
                     <h4 data-translate="footer_contact">Quick Contact</h4>
-                    <p><i class="fa-solid fa-envelope" style="color: var(--primary-dark);"></i> <a href="mailto:hello@dgreenniravakuta.com">hello@dgreenniravakuta.com</a></p>
-                    <p><i class="fa-solid fa-phone" style="color: var(--primary-dark);"></i> <a href="tel:081128070123">0811-2807-0123</a></p>
+                    <p><i class="fa-solid fa-envelope icon-accent" aria-hidden="true"></i> <a href="mailto:hello@dgreenniravakuta.com">hello@dgreenniravakuta.com</a></p>
+                    <p><i class="fa-solid fa-phone icon-accent" aria-hidden="true"></i> <a href="tel:081128070123">0811-2807-0123</a></p>
                     <p>
-                        <i class="fa-solid fa-location-dot" style="color: var(--primary-dark);"></i>
+                        <i class="fa-solid fa-location-dot icon-accent" aria-hidden="true"></i>
                         <span>Jl. Grand Dewi Sri No.88, Legian, Kec. Kuta, Kabupaten Badung, Bali 80361</span>
                     </p>
                 </div>
@@ -484,17 +487,17 @@
                     <h4 data-translate="footer_social">Find & Follow Us</h4>
                     <p>
                         <a href="https://www.instagram.com/dgreenniravakuta" target="_blank" class="social-link">
-                            <i class="fa-brands fa-instagram" style="font-size: 1.2rem; color: var(--primary-dark);"></i> Instagram
+                            <i class="fa-brands fa-instagram" aria-hidden="true"></i> Instagram
                         </a>
                     </p>
                     <p>
                         <a href="https://www.tiktok.com/@dgreen.niravakuta" target="_blank" class="social-link">
-                            <i class="fa-brands fa-tiktok" style="font-size: 1.2rem; color: var(--primary-dark);"></i> TikTok
+                            <i class="fa-brands fa-tiktok" aria-hidden="true"></i> TikTok
                         </a>
                     </p>
                     <p>
                         <a href="https://maps.app.goo.gl/7E1rv2BynYwMyYUQ7?g_st=ac" target="_blank" class="social-link">
-                            <i class="fa-solid fa-map-location-dot" style="font-size: 1.2rem; color: var(--primary-dark);"></i> Google Maps
+                            <i class="fa-solid fa-map-location-dot" aria-hidden="true"></i> Google Maps
                         </a>
                     </p>
                 </div>
@@ -509,16 +512,16 @@
 
     <!-- Lightbox -->
     <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="Image viewer">
-        <button class="lightbox-btn lightbox-close" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
-        <button class="lightbox-btn lightbox-prev" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
+        <button class="lightbox-btn lightbox-close" aria-label="Close"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+        <button class="lightbox-btn lightbox-prev" aria-label="Previous image"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></button>
         <img class="lightbox-img" src="" alt="">
-        <button class="lightbox-btn lightbox-next" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
+        <button class="lightbox-btn lightbox-next" aria-label="Next image"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button>
         <div class="lightbox-counter"></div>
     </div>
 
     <!-- Back to Top -->
     <button class="back-to-top" id="backToTop" aria-label="Back to top">
-        <i class="fa-solid fa-chevron-up"></i>
+        <i class="fa-solid fa-chevron-up" aria-hidden="true"></i>
     </button>
 
     <!-- Scripts -->

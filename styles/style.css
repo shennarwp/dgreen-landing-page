@@ -39,6 +39,31 @@
             margin: 0 auto;
         }
 
+        .section-header {
+            text-align: center;
+        }
+
+        .icon-accent {
+            color: var(--primary-dark);
+        }
+
+        .skip-link {
+            position: absolute;
+            top: 0;
+            left: -9999px;
+            z-index: 3000;
+            background-color: var(--primary-dark);
+            color: var(--text-light);
+            padding: 10px 20px;
+            border-radius: 0 0 4px 0;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .skip-link:focus {
+            left: 0;
+        }
+
         /* Buttons */
         .btn {
             display: inline-flex;
@@ -376,6 +401,13 @@
             transform: scale(1.03);
         }
 
+        .gallery-item img:focus-visible,
+        .room-card-img:focus-visible,
+        .lightbox-btn:focus-visible {
+            outline: 3px solid var(--secondary-color);
+            outline-offset: -3px;
+        }
+
         /* Accommodations Section */
         .rooms-section {
             padding: 40px 0;
@@ -636,6 +668,11 @@
             gap: 8px;
             margin: 0 10px;
             font-weight: 500;
+        }
+
+        .social-link i {
+            font-size: 1.2rem;
+            color: var(--primary-dark);
         }
 
         /* Portrait View (Default Layout) */
