@@ -49,9 +49,12 @@
 
         /* Back to Top */
         const backToTop = document.getElementById('backToTop');
-        window.addEventListener('scroll', () => {
+        function updateBackToTop() {
             backToTop.classList.toggle('show', window.scrollY > 600);
-        }, { passive: true });
+        }
+        window.addEventListener('scroll', updateBackToTop, { passive: true });
+        window.addEventListener('pageshow', updateBackToTop);
+        updateBackToTop();
         backToTop.addEventListener('click', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
