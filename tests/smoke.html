@@ -188,7 +188,32 @@
         commonSec(raw, doc, tag, baseUrl);
     }
 
-    /* ---------- Behavioral checks (only possible same-origin, via iframe) ---------- */
+    /* ---------- EN↔ID structural drift check ---------- */
+
+    function fingerprint(doc) {
+        return {
+            sections: Array.prototype.map.call(doc.querySelectorAll('main section[id]'), function (s) { return s.id; }).join(','),
+            navLinks: doc.querySelectorAll('.nav-links a').length,
+            faq: doc.querySelectorAll('.faq-item').length,
+            gallery: doc.querySelectorAll('#gallery img').length,
+            reviews: doc.querySelectorAll('.review-card').length,
+            waAnchors: doc.querySelectorAll('a[data-wa-msg]').length,
+            roomCards: doc.querySelectorAll('.room-card').length,
+            specsPerRoom: Array.prototype.map.call(doc.querySelectorAll('.room-card'), function (c) { return c.querySelectorAll('.room-specs li').length; }).join(','),
+            amenityItems: doc.querySelectorAll('.amenities-list li').length,
+            footerCols: doc.querySelectorAll('.footer-col').length,
+            reviewButtons: doc.querySelectorAll('.reviews-more a').length,
+            stickyBook: doc.querySelectorAll('.sticky-book').length,
+            backToTop: doc.querySelectorAll('#backToTop').length
+        };
+    }
+
+    function runDrift(enDoc, idDoc) {
+        var en = fingerprint(enDoc), id = fingerprint(idDoc);
+        Object.keys(en).forEach(function (key) {
+            check('DRIFT ' + key + ' matches (EN=' + en[key] + ' ID=' + id[key] + ')', String(en[key]) === String(id[key]));
+        });
+    }
 
     function behaviorEn(win, doc, baseUrl) {
         check('BEH EN lightbox opens', (function () {
@@ -319,6 +344,7 @@
             var idDoc = new DOMParser().parseFromString(idRaw, 'text/html');
             runStatic(enRaw, enDoc, 'EN', url);
             runStatic(idRaw, idDoc, 'ID', url);
+            runDrift(enDoc, idDoc);
 
             /* Behavioral checks only meaningful when served same-origin with the site */
             await runBehavior('EN', 'index.html', url);
