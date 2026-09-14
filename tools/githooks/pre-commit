@@ -1,0 +1,9 @@
+#!/bin/sh
+# Pre-commit hook: refresh sitemap.xml <lastmod> for staged page changes.
+# The updater only rewrites the file when a date actually changes, so this
+# is silent for unrelated commits. Enable with:
+#   git config core.hooksPath tools/githooks
+set -e
+repo=$(git rev-parse --show-toplevel)
+python3 "$repo/tools/update-sitemap-lastmod.py" --staged
+git add "$repo/sitemap.xml"
