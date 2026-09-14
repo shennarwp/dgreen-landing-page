@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>D'Green Niravakuta — Smoke Test</title>
+<style>
+    body { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background: #10130f; color: #e6e9e2; margin: 0; padding: 20px; }
+    h1 { font-size: 1.1rem; color: #b7c6a8; }
+    #summary { font-size: 1.05rem; margin: 12px 0; }
+    #controls { margin: 12px 0; }
+    #controls input { font-family: inherit; background: #1c2118; color: #e6e9e2; border: 1px solid #3a4433; padding: 6px 10px; border-radius: 4px; width: 320px; }
+    #controls button { font-family: inherit; background: #3a5738; color: #fff; border: 0; padding: 6px 14px; border-radius: 4px; cursor: pointer; }
+    #controls button:hover { background: #4a6b46; }
+    button.run { background: #555 !important; }
+    table { border-collapse: collapse; width: 100%; max-width: 1000px; margin-top: 12px; }
+    td, th { text-align: left; padding: 3px 10px; vertical-align: top; border-bottom: 1px solid #23281d; }
+    .pass { color: #79d18a; }
+    .fail { color: #ff8f8f; }
+    .skip { color: #d8b26a; }
+    #log { margin-top: 20px; white-space: pre-wrap; color: #9aa692; }
+    .err { color: #ff8f8f; white-space: pre-wrap; }
+</style>
+</head>
+<body>
+<h1>D'Green Niravakuta — Smoke Test</h1>
+<p>Dependency-free: works from any static server, no Node needed. Point it at the live site by entering the URL base below.</p>
+
+<div id="controls">
+    <input id="base" placeholder="e.g. https://dgreenniravakuta.com" value="">
+    <button id="runBtn">Run</button>
+</div>
+
+<div id="summary"></div>
+<table>
+    <thead><tr><th style="width:60px">Result</th><th>Check</th></tr></thead>
+    <tbody id="results"></tbody>
+</table>
+
+<div id="base-help"></div>
+<div id="log"></div>
+
+<script>
+(function () {
+    'use strict';
+
+    var results = [];
+    var logs = [];
+    var runBtn = document.getElementById('runBtn');
+    var baseInput = document.getElementById('base');
+
+    function check(name, ok) {
+        results.push({ name: name, ok: ok === true });
+    }
+
+    function log(msg) {
+        logs.push(msg);
+        var el = document.getElementById('log');
+        el.textContent = logs.join('\n');
+    }
+
+    function render() {
+        var tbody = document.getElementById('results');
+        tbody.innerHTML = '';
+        var fails = 0, passes = 0;
+        results.forEach(function (r) {
+            var tr = document.createElement('tr');
+            var tdStatus = document.createElement('td');
+            var tdName = document.createElement('td');
+            tdStatus.className = r.ok ? 'pass' : 'fail';
+            tdStatus.textContent = r.ok ? 'PASS' : 'FAIL';
+            tdName.textContent = r.name;
+            if (!r.ok) { tdName.className = 'fail'; fails++; } else { passes++; }
+            tr.appendChild(tdStatus);
+            tr.appendChild(tdName);
+            tbody.appendChild(tr);
+        });
+        var summary = document.getElementById('summary');
+        summary.className = fails ? 'fail' : 'pass';
+        summary.textContent = passes + ' passed, ' + fails + ' failed, ' + (results.length - passes - fails) + ' skipped';
+    }
+
+    /* ---------- Static checks on a fetched HTML string ---------- */
+
+    function stripBase(url) {
+        return url.replace(/\/$/, '');
+    }
+
+    function commonSec(raw, doc, tag, baseUrl) {
+        var CSP = doc.querySelector('meta[http-equiv="Content-Security-Policy"]');
+        check(tag + ' CSP present', CSP !== null);
+        if (CSP) {
+            var c = CSP.getAttribute('content') || '';
+            check(tag + ' CSP script-src analytics', /script-src 'self' https:\/\/stats\.rwpiri\.com/.test(c));
+            check(tag + ' CSP frame-src maps', /frame-src https:\/\/www\.google\.com/.test(c));
+            check(tag + ' CSP object-src none', /object-src 'none'/.test(c));
+        }
+        var blanks = Array.prototype.slice.call(doc.querySelectorAll('a[target="_blank"]'));
+        var noRel = blanks.filter(function (a) { return (a.getAttribute('rel') || '').indexOf('noopener') === -1; });
+        check(tag + ' all target=_blank have noopener', noRel.length === 0);
+        check(tag + ' no hardcoded wa number in source', raw.indexOf('wa.me/6281128070123') === -1);
+        var preloads = Array.prototype.slice.call(doc.querySelectorAll('link[rel="preload"][as="image"]'));
+        var hasSmall = preloads.some(function (l) { return l.href.indexOf('-768.webp') !== -1 && l.media === '(max-width: 768px)'; });
+        var hasFull = preloads.some(function (l) { return l.href.indexOf('-768.webp') === -1 && l.media === '(min-width: 769px)'; });
+        check(tag + ' viewport-sized hero preloads', hasSmall && hasFull);
+        check(tag + ' analytics script', doc.querySelector('script[src*="stats.rwpiri.com"]') !== null);
+        var gallery = Array.prototype.slice.call(doc.querySelectorAll('#gallery img[data-lightbox]'));
+        check(tag + ' gallery srcset on all', gallery.length === 5 && gallery.every(function (i) { return i.hasAttribute('srcset') && i.hasAttribute('sizes'); }));
+        var logos = Array.prototype.slice.call(doc.querySelectorAll('footer img[srcset]'));
+        check(tag + ' footer logo srcset', logos.length === 2);
+        var sticky = doc.querySelector('.sticky-book');
+        check(tag + ' sticky booking bar', sticky !== null && sticky.getAttribute('target') === '_blank');
+    }
+
+    /* Production URLs are baked into every page as absolute canonical/hreflang
+       targets. They must point at the live site no matter where the test runs. */
+    var PROD = 'https://dgreenniravakuta.com';
+
+    function runStatic(raw, doc, tag, baseUrl) {
+        var b = stripBase(baseUrl);
+
+        if (tag === 'EN') {
+            check('EN html lang', doc.documentElement.lang === 'en');
+            var canon = doc.querySelector('link[rel="canonical"]');
+            check('EN canonical', canon && (canon.href === PROD + '/' || canon.getAttribute('href') === PROD + '/'));
+            var alts = Array.prototype.slice.call(doc.querySelectorAll('link[rel="alternate"]')).map(function (l) { return l.hreflang + '=' + l.href; });
+            check('EN hreflang id alt', alts.indexOf('id=' + PROD + '/id/') !== -1);
+            check('EN hreflang en alt', alts.indexOf('en=' + PROD + '/') !== -1);
+            check('EN no data-translate', doc.querySelectorAll('[data-translate]').length === 0);
+            check('EN no inline styles', doc.querySelectorAll('[style]').length === 0);
+            check('EN lang switch EN active', (doc.querySelector('.lang-btn.active') || {}).textContent === 'EN');
+            check('EN lang switch ID rel link', doc.querySelector('.lang-btn[href="id/"]') !== null);
+            check('EN card class junior', doc.querySelector('.room-card-img-junior') !== null);
+            check('EN card class suite', doc.querySelector('.room-card-img-suite') !== null);
+        } else {
+            check('ID html lang', doc.documentElement.lang === 'id');
+            var canonId = doc.querySelector('link[rel="canonical"]');
+            check('ID canonical', canonId && (canonId.href === PROD + '/id/' || canonId.getAttribute('href') === PROD + '/id/'));
+            var altsId = Array.prototype.slice.call(doc.querySelectorAll('link[rel="alternate"]')).map(function (l) { return l.hreflang + '=' + l.href; });
+            check('ID hreflang en alt', altsId.indexOf('en=' + PROD + '/') !== -1);
+            check('ID hreflang id alt', altsId.indexOf('id=' + PROD + '/id/') !== -1);
+            check('ID title', doc.title.indexOf('Hotel Butik di Kuta') !== -1);
+            check('ID hero heading', (doc.querySelector('.hero-content h1') || {}).textContent === 'Menginap tenang di jantung kota Kuta');
+            check('ID no data-translate', doc.querySelectorAll('[data-translate]').length === 0);
+            check('ID lang switch ID active', (doc.querySelector('.lang-btn.active') || {}).textContent === 'ID');
+            check('ID lang switch EN rel link', doc.querySelector('.lang-btn[href="../"]') !== null);
+            check('ID card class junior', doc.querySelector('.room-card-img-junior') !== null);
+            check('ID card class suite', doc.querySelector('.room-card-img-suite') !== null);
+            check('ID sticky bar text', (doc.querySelector('.sticky-book span') || {}).textContent === 'Cari Kamar');
+            var galleryId = Array.prototype.slice.call(doc.querySelectorAll('#gallery img'));
+            check('ID gallery srcset uses ../', galleryId.every(function (i) { return (i.getAttribute('srcset') || '').indexOf('../images/') === 0; }));
+        }
+
+        /* WhatsApp hrefs are built at runtime by main.js, so their presence is a
+           behavioral check; here we only verify the anchors and wiring exist. */
+        var wa = Array.prototype.slice.call(doc.querySelectorAll('a[data-wa-msg]'));
+        check(tag + ' 5 wa anchors', wa.length === 5);
+        check(tag + ' wa anchors have data-wa-msg', wa.every(function (a) { return (a.getAttribute('data-wa-msg') || '').length > 0; }));
+
+        check(tag + ' whatsapp in action group', doc.querySelector('.sticky-actions .whatsapp-float') !== null);
+        check(tag + ' back-to-top above whatsapp', doc.querySelector('.sticky-actions .back-to-top') !== null);
+        check(tag + ' booking pill centered standalone', doc.querySelector('.sticky-book') !== null && !doc.querySelector('.sticky-actions .sticky-book'));
+
+        commonSec(raw, doc, tag, baseUrl);
+    }
+
+    /* ---------- Behavioral checks (only possible same-origin, via iframe) ---------- */
+
+    function behaviorEn(win, doc, baseUrl) {
+        check('BEH EN lightbox opens', (function () {
+            var g = doc.querySelectorAll('img[data-lightbox]');
+            if (!g.length) return false;
+            g[0].click();
+            return doc.getElementById('lightbox').classList.contains('open');
+        })());
+
+        check('BEH EN lightbox src', (doc.querySelector('.lightbox-img') || {}).src === baseUrl + '/images/pool.webp');
+
+        var lb = doc.getElementById('lightbox');
+        var before = (doc.querySelector('.lightbox-img') || {}).src;
+        lb.dispatchEvent(new win.PointerEvent('pointerdown', { clientX: 400, clientY: 300, bubbles: true }));
+        lb.dispatchEvent(new win.PointerEvent('pointerup', { clientX: 150, clientY: 300, bubbles: true }));
+        check('BEH EN swipe advances lightbox', doc.querySelector('.lightbox-img').src !== before);
+
+        check('BEH EN wa href built', (function () {
+            var a = doc.querySelector('.sticky-actions .whatsapp-float');
+            return a && a.href.indexOf('https://wa.me/6281128070123?text=') === 0;
+        })());
+    }
+
+    function behaviorId(win, doc) {
+        var g = doc.querySelectorAll('img[data-lightbox]');
+        check('BEH ID lightbox opens', (function () {
+            if (!g.length) return false;
+            g[0].click();
+            return doc.getElementById('lightbox').classList.contains('open');
+        })());
+        var lb = doc.getElementById('lightbox');
+        var before = (doc.querySelector('.lightbox-img') || {}).src;
+        lb.dispatchEvent(new win.PointerEvent('pointerdown', { clientX: 100, clientY: 300, bubbles: true }));
+        lb.dispatchEvent(new win.PointerEvent('pointerup', { clientX: 500, clientY: 300, bubbles: true }));
+        check('BEH ID back-swipe advances lightbox', doc.querySelector('.lightbox-img').src !== before);
+    }
+
+    function behaviorBoth(win, doc, lang) {
+        return new Promise(function (resolve) {
+            /* close any open lightbox so body overflow is cleared and scrolling works */
+            var lb = doc.getElementById('lightbox');
+            if (lb) {
+                lb.classList.remove('open');
+                lb.setAttribute('aria-hidden', 'true');
+                doc.body.style.overflow = '';
+            }
+            /* back-to-top appears only after scrolling past 600 — wait for the async scroll event */
+            win.scrollTo(0, 1000);
+            setTimeout(function () {
+                try {
+                    var btn = doc.getElementById('backToTop');
+                    check('BEH ' + lang + ' back-to-top shows after scroll', btn && btn.classList.contains('show'));
+
+                    var wa = doc.querySelector('.whatsapp-float');
+                    if (btn && wa) {
+                        var br = btn.getBoundingClientRect();
+                        var wr = wa.getBoundingClientRect();
+                        check('BEH ' + lang + ' back-to-top above whatsapp (same x)', Math.abs(br.left - wr.left) < 1 && br.bottom <= wr.top);
+                        log(lang + ' layout: arrow x=' + br.left + ' y=' + br.top + ' bottom=' + br.bottom + ' | wa x=' + wr.left + ' top=' + wr.top);
+                    } else {
+                        check('BEH ' + lang + ' back-to-top above whatsapp (same x)', false);
+                    }
+                } catch (e) {
+                    log(lang + ' behavior layout check error: ' + e.message);
+                }
+                resolve();
+            }, 300);
+        });
+    }
+
+    function runBehavior(tag, relPath, baseUrl) {
+        return new Promise(function (resolve) {
+            var iframe = document.createElement('iframe');
+            /* off-screen but sized, so the page has layout and can actually scroll */
+            iframe.style.position = 'fixed';
+            iframe.style.left = '-10000px';
+            iframe.style.top = '0';
+            iframe.style.width = '1000px';
+            iframe.style.height = '800px';
+            iframe.style.border = '0';
+            document.body.appendChild(iframe);
+            iframe.addEventListener('load', function () {
+                var sameOrigin = true;
+                var win, doc;
+                try {
+                    win = iframe.contentWindow;
+                    doc = iframe.contentDocument;
+                    if (tag === 'EN') behaviorEn(win, doc, stripBase(baseUrl)); else behaviorId(win, doc);
+                } catch (e) {
+                    sameOrigin = false;
+                    log(tag + ' behavior checks skipped (cross-origin iframe not inspectable): ' + e.message);
+                }
+                var done = function () {
+                    document.body.removeChild(iframe);
+                    resolve(sameOrigin);
+                };
+                behaviorBoth(win, doc, tag).then(done, done);
+            });
+            iframe.src = baseUrl.replace(/\/$/, '') + '/' + relPath;
+        });
+    }
+
+    /* ---------- Runner ---------- */
+
+    async function run() {
+        runBtn.disabled = true;
+        runBtn.textContent = 'Running…';
+        results = [];
+        logs = [];
+        var baseUrl = baseInput.value.trim() || '';
+        if (!baseUrl) baseUrl = window.location.origin + window.location.pathname.replace(/tests\/smoke\.html$/, '').replace(/\/+$/, '');
+        var url = stripBase(baseUrl) + '/';
+
+        var th = document.getElementById('base-help');
+        th.textContent = '';
+        if (window.location.protocol === 'file:') {
+            th.className = 'err';
+            th.textContent = 'Warning: fetch of local files is blocked on file:// — serve this folder over http (e.g. python -m http.server) or use the live URL.';
+        }
+
+        try {
+            var [enRaw, idRaw] = await Promise.all([
+                fetch(url).then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); }),
+                fetch(url + 'id/').then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+            ]);
+
+            var enDoc = new DOMParser().parseFromString(enRaw, 'text/html');
+            var idDoc = new DOMParser().parseFromString(idRaw, 'text/html');
+            runStatic(enRaw, enDoc, 'EN', url);
+            runStatic(idRaw, idDoc, 'ID', url);
+
+            /* Behavioral checks only meaningful when served same-origin with the site */
+            await runBehavior('EN', 'index.html', url);
+            await runBehavior('ID', 'id/index.html', url);
+        } catch (e) {
+            check('fetch site pages', false);
+            log('Fetched base: ' + url);
+            log('Error fetching: ' + e.message);
+        }
+
+        render();
+        runBtn.disabled = false;
+        runBtn.textContent = 'Run';
+    }
+
+    runBtn.addEventListener('click', run);
+    run();
+})();
+</script>
+</body>
+</html>
