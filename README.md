@@ -39,15 +39,15 @@ Deployed automatically via **GitHub Pages** from the `master` branch. The `CNAME
 
 ## Git hooks
 
-A pre-commit hook refreshes `sitemap.xml` `<lastmod>` for staged page changes. Enable it once per clone (hooks aren't versioned by git):
+A pre-commit hook refreshes `sitemap.xml` `<lastmod>` for staged page changes. Git never runs repo code on clone, so enable it once with:
 
 ```bash
-git config core.hooksPath tools/githooks
+./tools/setup.sh
 ```
 
 You can also run the updater manually:
 
 ```bash
-python3 tools/update-sitemap-lastmod.py
+sh tools/update-sitemap-lastmod.sh
 ```
 
