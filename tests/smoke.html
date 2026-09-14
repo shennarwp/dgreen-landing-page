@@ -87,6 +87,17 @@
     }
 
     function commonSec(raw, doc, tag, baseUrl) {
+        var ldBlocks = Array.prototype.slice.call(doc.querySelectorAll('script[type="application/ld+json"]'));
+        var ldOk = false, faqCount = 0;
+        try {
+            ldBlocks.forEach(function (s) {
+                var data = JSON.parse(s.textContent);
+                if (data['@type'] === 'FAQPage') faqCount = (data.mainEntity || []).length;
+            });
+            ldOk = ldBlocks.length === 2;
+        } catch (e) { ldOk = false; }
+        check(tag + ' JSON-LD parses (2 blocks)', ldOk);
+        check(tag + ' JSON-LD FAQ matches visible (11)', faqCount === doc.querySelectorAll('.faq-item').length && faqCount === 11);
         var CSP = doc.querySelector('meta[http-equiv="Content-Security-Policy"]');
         check(tag + ' CSP present', CSP !== null);
         if (CSP) {
@@ -140,7 +151,7 @@
             check('ID hreflang en alt', altsId.indexOf('en=' + PROD + '/') !== -1);
             check('ID hreflang id alt', altsId.indexOf('id=' + PROD + '/id/') !== -1);
             check('ID title', doc.title.indexOf('Hotel Butik di Kuta') !== -1);
-            check('ID hero heading', (doc.querySelector('.hero-content h1') || {}).textContent === 'Menginap tenang di jantung kota Kuta');
+            check('ID hero heading', (doc.querySelector('.hero-content h1') || {}).textContent === 'Menginap tenang di tengah Kuta');
             check('ID no data-translate', doc.querySelectorAll('[data-translate]').length === 0);
             check('ID lang switch ID active', (doc.querySelector('.lang-btn.active') || {}).textContent === 'ID');
             check('ID lang switch EN rel link', doc.querySelector('.lang-btn[href="../"]') !== null);
@@ -160,6 +171,19 @@
         check(tag + ' whatsapp in action group', doc.querySelector('.sticky-actions .whatsapp-float') !== null);
         check(tag + ' back-to-top above whatsapp', doc.querySelector('.sticky-actions .back-to-top') !== null);
         check(tag + ' booking pill centered standalone', doc.querySelector('.sticky-book') !== null && !doc.querySelector('.sticky-actions .sticky-book'));
+
+        /* Contact, sharing & footer wiring */
+        var contactLink = doc.querySelector('.nav-links a[href="#contact"]');
+        check(tag + ' contact nav link', contactLink !== null);
+        var tel = doc.querySelector('a[href^="tel:"]');
+        check(tag + ' tel uses country code', tel !== null && tel.getAttribute('href').indexOf('tel:+62') === 0);
+        check(tag + ' theme-color present', doc.querySelector('meta[name="theme-color"]') !== null);
+        check(tag + ' twitter card complete', doc.querySelector('meta[name="twitter:title"]') !== null && doc.querySelector('meta[name="twitter:description"]') !== null && doc.querySelector('meta[name="twitter:image"]') !== null);
+        check(tag + ' og image dimensions', doc.querySelector('meta[property="og:image:width"]') !== null && doc.querySelector('meta[property="og:image:height"]') !== null);
+        check(tag + ' og locale set', doc.querySelector('meta[property="og:locale"]') !== null);
+        check(tag + ' faq has 11 items', doc.querySelectorAll('.faq-item').length === 11);
+        check(tag + ' hero img fetchpriority', (function () { var img = doc.querySelector('.hero-bg img'); return img !== null && img.getAttribute('fetchpriority') === 'high' && img.getAttribute('alt') === ''; })());
+        check(tag + ' leave-a-review cta', doc.querySelectorAll('.reviews-more a').length === 2);
 
         commonSec(raw, doc, tag, baseUrl);
     }

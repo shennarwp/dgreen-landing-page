@@ -102,6 +102,46 @@
                     "@type": "Answer",
                     "text": "Long-stay discounts are possible based on availability - please ask our staff."
                 }
+            },
+            {
+                "@type": "Question",
+                "name": "Do you offer airport transfer?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes — we can arrange airport pickup and drop-off for an additional charge. Just message us on WhatsApp with your flight details."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is breakfast included?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Breakfast is not included, but every suite has a private kitchenette — and cafés and restaurants are within walking distance."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Are children welcome?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, children are very welcome and stay free using the existing bedding. Message us if you need an extra bed."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Do you allow pets?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No — pets are not allowed, so every guest can enjoy a calm, allergy-friendly stay."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What payment methods do you accept?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "We accept cash (IDR), bank transfer, and major credit cards. A deposit may be required to confirm longer stays."
+                }
             }
         ]
     }
@@ -112,8 +152,16 @@
     <meta property="og:title" content="D'Green Niravakuta | Boutique Stay in Kuta, Bali">
     <meta property="og:description" content="Calm boutique stay in the heart of Kuta. Large comfortable suites with handcrafted teak wood, a quiet outdoor pool, and total privacy.">
     <meta property="og:image" content="https://dgreenniravakuta.com/images/pool.webp">
+    <meta property="og:image:width" content="1280">
+    <meta property="og:image:height" content="852">
     <meta property="og:url" content="https://dgreenniravakuta.com/">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="id_ID">
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="D'Green Niravakuta | Boutique Stay in Kuta, Bali">
+    <meta name="twitter:description" content="Calm boutique stay in the heart of Kuta. Large comfortable suites with handcrafted teak wood, a quiet outdoor pool, and total privacy.">
+    <meta name="twitter:image" content="https://dgreenniravakuta.com/images/pool.webp">
+    <meta name="theme-color" content="#3c4836">
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
     <!-- Preload hero background image (LCP) — sized per viewport -->
@@ -136,7 +184,7 @@
     <header>
         <div class="container">
             <nav>
-                <a href="#" class="logo-container">
+                <a href="/" class="logo-container">
                     <img src="images/logo-square-header.webp" alt="D'Green Niravakuta Logo" class="header-logo" width="45" height="45">
                     <span class="logo-text">D'Green <span>Niravakuta</span></span>
                 </a>
@@ -146,6 +194,7 @@
                         <li><a href="#gallery">Gallery</a></li>
                         <li><a href="#suites">Our Suites</a></li>
                         <li><a href="#location">Find Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
                     </ul>
                     <!-- Language Switcher -->
                     <div class="lang-switch">
@@ -165,6 +214,10 @@
     <main id="main">
     <!-- Hero Section -->
     <section class="hero">
+        <picture class="hero-bg" aria-hidden="true">
+            <source media="(max-width: 768px)" srcset="images/pool-768.webp">
+            <img src="images/pool.webp" alt="" fetchpriority="high" decoding="async">
+        </picture>
         <div class="hero-content container">
             <h1>Calm stay in the heart of Kuta</h1>
             <p>Large comfortable suites for longer, better stays. Near everything you need.</p>
@@ -367,6 +420,9 @@
                 <a href="https://maps.app.goo.gl/7E1rv2BynYwMyYUQ7?g_st=ac" target="_blank" rel="noopener noreferrer" class="btn btn-google">
                     <i class="fa-brands fa-google" aria-hidden="true"></i> <span>Read all reviews on Google</span>
                 </a>
+                <a href="https://www.google.com/maps/search/?api=1&amp;query=D%27Green+Niravakuta+Kuta" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+                    <i class="fa-solid fa-star" aria-hidden="true"></i> <span>Leave us a Google review</span>
+                </a>
             </div>
         </div>
     </section>
@@ -420,6 +476,41 @@
                         <i class="fa-solid fa-chevron-down faq-icon" aria-hidden="true"></i>
                     </summary>
                     <p>Long-stay discounts are possible based on availability — please ask our staff.</p>
+                </details>
+                <details class="faq-item reveal reveal-d2">
+                    <summary>
+                        <span class="faq-q"><i class="fa-solid fa-plane" aria-hidden="true"></i> <span>Do you offer airport transfer?</span></span>
+                        <i class="fa-solid fa-chevron-down faq-icon" aria-hidden="true"></i>
+                    </summary>
+                    <p>Yes — we can arrange airport pickup and drop-off for an additional charge. Just message us on WhatsApp with your flight details.</p>
+                </details>
+                <details class="faq-item reveal">
+                    <summary>
+                        <span class="faq-q"><i class="fa-solid fa-mug-saucer" aria-hidden="true"></i> <span>Is breakfast included?</span></span>
+                        <i class="fa-solid fa-chevron-down faq-icon" aria-hidden="true"></i>
+                    </summary>
+                    <p>Breakfast is not included, but every suite has a private kitchenette — and cafés and restaurants are within walking distance.</p>
+                </details>
+                <details class="faq-item reveal reveal-d1">
+                    <summary>
+                        <span class="faq-q"><i class="fa-solid fa-child" aria-hidden="true"></i> <span>Are children welcome?</span></span>
+                        <i class="fa-solid fa-chevron-down faq-icon" aria-hidden="true"></i>
+                    </summary>
+                    <p>Yes, children are very welcome and stay free using the existing bedding. Message us if you need an extra bed.</p>
+                </details>
+                <details class="faq-item reveal reveal-d2">
+                    <summary>
+                        <span class="faq-q"><i class="fa-solid fa-paw" aria-hidden="true"></i> <span>Do you allow pets?</span></span>
+                        <i class="fa-solid fa-chevron-down faq-icon" aria-hidden="true"></i>
+                    </summary>
+                    <p>No — pets are not allowed, so every guest can enjoy a calm, allergy-friendly stay.</p>
+                </details>
+                <details class="faq-item reveal">
+                    <summary>
+                        <span class="faq-q"><i class="fa-solid fa-credit-card" aria-hidden="true"></i> <span>What payment methods do you accept?</span></span>
+                        <i class="fa-solid fa-chevron-down faq-icon" aria-hidden="true"></i>
+                    </summary>
+                    <p>We accept cash (IDR), bank transfer, and major credit cards. A deposit may be required to confirm longer stays.</p>
                 </details>
             </div>
         </div>
@@ -475,7 +566,7 @@
                 <div class="footer-col">
                     <h4>Quick Contact</h4>
                     <p><i class="fa-solid fa-envelope icon-accent" aria-hidden="true"></i> <a href="mailto:hello@dgreenniravakuta.com">hello@dgreenniravakuta.com</a></p>
-                    <p><i class="fa-solid fa-phone icon-accent" aria-hidden="true"></i> <a href="tel:081128070123">0811-2807-0123</a></p>
+                    <p><i class="fa-solid fa-phone icon-accent" aria-hidden="true"></i> <a href="tel:+6281128070123">0811-2807-0123</a></p>
                     <p>
                         <i class="fa-solid fa-location-dot icon-accent" aria-hidden="true"></i>
                         <span>Jl. Grand Dewi Sri No.88, Legian, Kec. Kuta, Kabupaten Badung, Bali 80361</span>
