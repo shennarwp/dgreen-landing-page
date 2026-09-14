@@ -37,3 +37,17 @@ Plain HTML/CSS/JS — no build step, no frameworks. A static site served by GitH
 
 Deployed automatically via **GitHub Pages** from the `master` branch. The `CNAME` file maps the custom domain.
 
+## Git hooks
+
+A pre-commit hook refreshes `sitemap.xml` `<lastmod>` for staged page changes. Enable it once per clone (hooks aren't versioned by git):
+
+```bash
+git config core.hooksPath tools/githooks
+```
+
+You can also run the updater manually:
+
+```bash
+python3 tools/update-sitemap-lastmod.py
+```
+
