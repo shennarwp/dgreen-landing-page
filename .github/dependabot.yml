@@ -4,7 +4,7 @@ updates:
   # Update GitHub Actions
   - package-ecosystem: "github-actions"
     directory: "/"
-    schedule:
+    schedule:  
       interval: "weekly"
 
   # Update Docker images used by devcontainer
