@@ -1,12 +1,6 @@
 version: 2
 
 updates:
-  # Update GitHub Actions
-  - package-ecosystem: "github-actions"
-    directory: "/"
-    schedule:  
-      interval: "weekly"
-
   # Update Docker images used by devcontainer
   - package-ecosystem: "docker"
     directory: "/.devcontainer"
